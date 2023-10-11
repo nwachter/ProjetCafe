@@ -118,12 +118,12 @@ input[type="radio"] {
     /* margin-left: 30px; */
     background-color: #392f2d91;
     z-index: 2;
-    padding: 10px;
+    /*padding: 10px;*/
     box-shadow: 5px 5px;
     border-bottom-right-radius: 30px;
     border-top-right-radius: 30px;
     box-shadow: inset 0em -0.1em 1em 0.05em #FFFFFF;
-    grid-template-columns: 1fr 6fr !important;
+    grid-template-columns: 1fr 6fr 0.5fr !important;
 }
 
 .card:before {
@@ -181,5 +181,10 @@ a {
     border-bottom: solid 2px #392F2Da0;
 }
 
+.category_indicator {
+    width: 20px;
+    height: auto;
+    position: relative;
+}
 
 /* Supprimer toutes props a la suite du div ayant cette prop */
