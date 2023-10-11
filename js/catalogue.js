@@ -5,6 +5,7 @@ window.onload = function () {
     let cardElements = document.getElementsByClassName('card grid');
     let addToCartButtons = document.getElementsByClassName('card__btn');
     let productsContainer = document.getElementsByClassName('grid-catalogue grid')[0];
+    let filtersBar = document.getElementById("filters-bar");
 
     //console.log("LSContent", getLSContent());
 
@@ -113,14 +114,14 @@ window.onload = function () {
     }
 
     /* Filtres */
-    /*class Product {
-        constructor(id, name, price, description, quantity = 0) {
+    class Product {
+        constructor(id, name, image, price, description, quantity = 0, category) {
             this.id = id;
             this.name = name;
             this.image = image;
-            this.quantity = quantity;
             this.price = price;
             this.description = description;
+            this.quantity = quantity;
             this.category = category;
         }
 
@@ -137,25 +138,28 @@ window.onload = function () {
     products = [];
 
     for (let i = 0 ; i < cardElements.length ; i++) {
-        const card = document.getElementsByClassName('card grid')[0];
-        const cardInfo = card.querySelector('card__info');
-        const cardButton = card.querySelector('add-to-cart');
+        const cardElement = document.getElementsByClassName('card grid')[i];
+        const cardInfo = cardElement.querySelector('.card__info');
+        const cardButton = cardElement.querySelector('.add-to-cart');
         const productId = cardButton.getAttribute("data-id");
-        const prodImage = card.querySelector("img").src;
+        const prodImage = cardElement.querySelector("img").src;
         const prodName = cardInfo.querySelector("h3").textContent;
-        const prodDescription = cardInfo.querySelector("card__text");
+        const prodQuantity = cardInfo.querySelector(".card__quantity").textContent;
+        const prodDescription = cardInfo.querySelector(".card__text");
         const prodPrice = cardInfo.querySelector(".card__price").textContent;
-        //const prodCategory = card.querySelector("category_indicator").getAttribute("data-category");
+        const prodCategory = cardElement.querySelector(".category_indicator").textContent;
+        //const prodCategory = cardElement.querySelector(".category_indicator").getAttribute("data-category");
         // Lors de sélection de "Café en grains" ; Si categorie de l'objet = café en grains ;  Afficher produit 
-        let product = new Product(productId, prodName, prodImage, prodQuantity, prodPrice, prodDescription, prodCategory);
+        let product = new Product(productId, prodName, prodImage, prodPrice, prodDescription, prodQuantity, prodCategory);
         
         products.push(product);
-    }*/
+    }
 
 
 //Utiliser les objets de l'array pour personnaliser la fonction saveProduct
 
-
+console.log(products);
+productsContainer.addEventListener
 
     //----------------------------------------------------------------------  
 
