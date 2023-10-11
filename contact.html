@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page d'accueil</title>
+  <link href="styles/style.css" rel="stylesheet" type="text/css" />
+  <link href="styles/contact.css" rel="stylesheet" type="text/css" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100" rel="stylesheet" />
+  <link href='https://fonts.googleapis.com/css?family=Brawler&subset=latin' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Calligraffitti&subset=latin' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Bentham&subset=latin' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Corben&subset=latin' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Caudex&subset=latin' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Cabin&subset=latin' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Allan&subset=latin' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Cherry+Cream+Soda&subset=latin' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Sonsie One' rel='stylesheet'>
+  <link
+    href="https://www.dafontfree.net/embed/c29uc2llLW9uZS1yZWd1bGFyJmRhdGEvMTkvcy85MjQ5OS9Tb25zaWVPbmUtUmVndWxhci5vdGY"
+    rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href=" https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css ">
+
+</head>
+
+<body>
+  <div id="body-container">
+
+    <header>
+      <div id="logo-slog">
+        <div id="logo">Café du Bien</div>
+        <div id="slogan">Ca fait du bien par où ça passe !</div>
+      </div>
+      <nav id="menu">
+        <div id="left-menu">
+          <a href="index.html" class="menu-elem">Accueil</a>
+          <a href="catalogue.html" class="menu-elem">Catalogue</a>
+          <a href="contact.html" class="menu-elem">Contact</a>
+        </div>
+        <div id="right-menu">
+          <a href="#" class="menu-elem">Connexion</a>
+          <a href="panier.html" class="menu-elem">Panier<img src="media/images/Shopping_basket.svg" id="panier"
+              class="menu-elem" alt="ico-pan"></a>
+        </div>
+
+      </nav>
+    </header>
+
+    <main id="contact-container" class="main-container">
+
+      <h1>Contact</h1><img src="media/images/dessin-cafe-transp.png" />
+      <div class="cafe-coords-container">
+        <div class="localisation-map">
+          <img src="./media/images/maps.PNG" />
+        </div>
+        <div class="cafe-contact-card">
+          <p>18 boulevard des Pyrénées</p>
+          <p>64000 Pau</p>
+          <p>05 59 88 24 18</p>
+          <p>contact@sunsetcoffee.fr</p>
+        </div>
+      </div>
+
+      <form class="formulaire" id="form-contact" name="form-contact" action="contact.html" method="POST">
+
+        <label for="util_prenom" class="form-col1">Prénom</label>
+        <input type="text" class="form-col2" name="util_prenom" id="util_prenom"/>
+
+
+        <label for="util_mail" class="form-col1">Mail</label>
+        <input type="tel" name="util_mail" class="form-col2" id="util_mail"/>
+
+        <div class="buttons form-col4" id="btns-coords">
+          <label for="btn_submit"></label>
+          <input type="submit" id="btn_submit" value="Enregistrer" name="submit" class="save-btn">
+
+          <label for="btn_reset"></label>
+          <input type="reset" value="Reset" name="reset" id="btn_reset" class="reset-btn">
+
+          <!--<label for="btn_affichage"></label>
+          <input type="button" value="Affichage Form" name="btn_affichage" id="btn_affichage" onclick="return affichageForm()"> -->
+        </div>
+      </form>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div id="foot-container">
+        <div class="foot-list">
+          <h3>Nous découvrir</h3>
+          <ul>
+            <li>
+              <p>18 boulevard des Pyrénées</p>
+              <p>64000 Pau</p>
+              <p>05 59 88 24 18</p>
+              <p>contact@sunsetcoffee.fr</p>
+
+            </li>
+          </ul>
+        </div>
+        <div class="foot-list">
+          <p>Suivez-nous sur les réseaux sociaux !</p>
+          <ul>
+            <li>
+              <p><a href="#"><img src="#" alt="fa-facebook"></a></p>
+              <p><a href="#"><img src="#" alt="fa-instagram"></a></p>
+              <p><a href="#"><img src="#" alt="tiktok"></a></p>
+              <p><a href="#"><img src="#" alt="fa-twitter"></a></p>
+
+            </li>
+          </ul>
+        </div>
+        <div class="foot-list">
+          <h3>Nous découvrir</h3>
+          <ul>
+            <li>
+              <p>18 boulevard des Pyrénées</p>
+              <p>64000 Pau</p>
+              <p>05 59 88 24 18</p>
+              <p>contact@sunsetcoffee.fr</p>
+
+            </li>
+          </ul>
+        </div>
+      </div>
+      <p>Copyright &copy; 2023</p>
+    </footer>
+    <!-- <script type="text/javascript" src="./js/script.js" async></script> -->
+    <script type="text/javascript" src="./js/contact.js"></script>
+
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+/* Buttons */
+#confirm-checkout-btn {
+    background-color: black;
+    color: white;
+    /* height: 35px; */
+    /* width: 100px; */
+    display: inline-block;
+    padding: 10px 24px;
+    font-family: 'SPECTRAL SC';
+}
+
+#confirm-checkout-btn:hover {
+    background:linear-gradient(to bottom, #252525 5%, #161616 100%);
+	background-color:#000000;
+}
+
+#confirm-checkout-btn:active {
+    position:relative;
+	top:1px;
+}
+
+#cancel-btn {
+    display: inline-block;
+    color: black;
+    padding: 10px 24px;
+    font-family: 'SPECTRAL SC';
+}
+
+/* Main */
+
+#main-payment {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+}
+
+#main-payment > div {
+    padding: 2em;
+}
+/* Liste de paiements */
+
+
+.option-element {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    flex : 1 10 5;
+}
+
+.subtotal, .delivery {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.total-container {
+    display: grid;
+    grid-template-columns: 4fr 1fr 1fr;
+    align-items: center;
+}

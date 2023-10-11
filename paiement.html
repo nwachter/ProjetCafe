@@ -1,0 +1,154 @@
+<!-- tableau pour articles, idem pour paiement
+grille pour catalogue ? -->
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paiement</title>
+  <link href="styles/style.css" rel="stylesheet" type="text/css" />
+  <link href="styles/paiement.css" rel="stylesheet" type="text/css" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100" rel="stylesheet" />
+  <!-- Google symboles en txt (modif weight ou autres)-->
+  <link href='https://fonts.googleapis.com/css?family=Brawler&subset=latin' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Calligraffitti&subset=latin' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Bentham&subset=latin' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Corben&subset=latin' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Caudex&subset=latin' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Cabin&subset=latin' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Allan&subset=latin' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Cherry+Cream+Soda&subset=latin' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Sonsie One' rel='stylesheet'>
+</head>
+
+<body>
+  <div id="body-container">
+
+    <!-- Header -->
+    <!-- <div id="css-grid">
+    <div>1</div>
+    <div>1</div>
+    <div>1</div>
+    <div>1</div>
+    <div>1</div>
+    <div>1</div>
+    <div>1</div>
+    <div>1</div>
+    <div>1</div>
+    <div>1</div>
+    <div>1</div>
+    <div>1</div>
+  </div> -->
+    <header>
+      <div id="logo-slog">
+        <div id="logo">Café du Bien</div>
+        <div id="slogan">Ca fait du bien par où ça passe !</div>
+      </div>
+      <nav id="menu">
+        <div id="left-menu">
+          <a href="index.html" class="menu-elem">Accueil</a>
+          <a href="catalogue.html" class="menu-elem">Catalogue</a>
+          <a href="contact.html" class="menu-elem">Contact</a>
+        </div>
+        <div id="right-menu">
+          <a href="#" class="menu-elem">Connexion</a>
+          <a href="panier.html" class="menu-elem">Panier<img src="media/images/Shopping_basket.svg" id="panier"
+              class="menu-elem" alt="ico-pan"></a>
+        </div>
+
+      </nav>
+    </header>
+
+    <main id="main-payment" class="main">
+        <!-- Informations enregistrées du client -->
+        <div class="info-container">
+            <div class="contact-info">
+
+            </div>
+            <div class="payment-container">
+                <h2>Paiement</h2>
+                <div class="payment-list">
+                    <ul>
+                        <li class="option-element">
+                            <input type="radio" id="credit-card" name="payment-radio" />
+                            <img src="./media/images/credit-cards.png" alt="PayPal" checked />
+                            <span>Carte de crédit (VISA, ...)</span>
+                        </li>
+                        <li class="option-element">
+                            <input type="radio" id="paypal" name="payment-radio"/>
+                            <img src="./media/images/paypal.png" alt="PayPal" />
+                            <span>Paypal</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Résumé de la commande -->
+        <div class="recap-container">
+            <div class="product-list">
+
+            </div>
+            <div class="subtotal"><span>Sous-total</span><span id="subtotal-amount"></span></div>
+            <div class="delivery"><span>Livraison</span><span>3.99€</span></div>
+            <hr>
+            <div class="total-container"><h3>Total</h3><span class="currency">EUR</span><span class="total"></span></div>
+            <div class="buttons">
+                <a href="paiement.html" id="confirm-checkout-btn" class="checkout-btn">Valider le Paiement</a>
+                <a href="panier3.html" id="cancel-btn" class="cancel-btn">Annuler le Paiement</a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div id="foot-container">
+        <div class="foot-list">
+          <h3>Nous découvrir</h3>
+          <ul>
+            <li>
+              <p>18 boulevard des Pyrénées</p>
+              <p>64000 Pau</p>
+              <p>05 59 88 24 18</p>
+              <p>contact@sunsetcoffee.fr</p>
+
+            </li>
+          </ul>
+        </div>
+        <div class="foot-list">
+          <p>Suivez-nous sur les réseaux sociaux !</p>
+          <ul>
+            <li>
+              <p><a href="#"><img src="#" alt="fa-facebook"></a></p>
+              <p><a href="#"><img src="#" alt="fa-instagram"></a></p>
+              <p><a href="#"><img src="#" alt="tiktok"></a></p>
+              <p><a href="#"><img src="#" alt="fa-twitter"></a></p>
+
+            </li>
+          </ul>
+        </div>
+        <div class="foot-list">
+          <h3>Nous découvrir</h3>
+          <ul>
+            <li>
+              <p>18 boulevard des Pyrénées</p>
+              <p>64000 Pau</p>
+              <p>05 59 88 24 18</p>
+              <p>contact@sunsetcoffee.fr</p>
+
+            </li>
+          </ul>
+        </div>
+      </div>
+      <p>Copyright &copy; 2023</p>
+    </footer>
+    <!-- <script type="text/javascript" src="./js/script.js" async></script> -->
+    <script type="text/javascript" src="./js/paiement.js"></script>
+
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+.cafe-coords-container {
+    display:flex;
+}
+
+#form-contact {
+    display:flex;
+    flex-direction: column;
+}
+
+form.formulaire legend {
+    font-family: "Calligraffitti", sans-serif;
+    font-size: 14px;
+}
+
+form label {
+    font-family: 'Helvetica';
+    display: inline-block;
+    font-size: 15px;
+}
+
+form.formulaire input,
+form.formulaire select {
+    width: 50%;
+    padding: 7px 7px;
+    /* margin: 5px 0; */
+    display: block; 
+    /* border: 1px solid #ccc; */
+    border-radius: 4px;
+    box-sizing: border-box;
+}
