@@ -6,7 +6,7 @@ window.onload = function () {
     let addToCartButtons = document.getElementsByClassName('card__btn');
     let productsContainer = document.getElementsByClassName('grid-catalogue grid')[0];
 
-    console.log("LSContent", getLSContent());
+    //console.log("LSContent", getLSContent());
 
     //Ajouter/Retirer quantités  ------------> A SUPPRIMER POSSIBLEMENT
     [...cardElements].forEach(function (cardElement) {
@@ -113,7 +113,7 @@ window.onload = function () {
     }
 
     /* Filtres */
-    class Product {
+    /*class Product {
         constructor(id, name, price, description, quantity = 0) {
             this.id = id;
             this.name = name;
@@ -121,7 +121,7 @@ window.onload = function () {
             this.quantity = quantity;
             this.price = price;
             this.description = description;
-            this.category = this.category;
+            this.category = category;
         }
 
         getQuantity() {
@@ -133,7 +133,7 @@ window.onload = function () {
         }
     }
 
-    /* Classe Produits */
+    // Classe Produits 
     products = [];
 
     for (let i = 0 ; i < cardElements.length ; i++) {
@@ -145,15 +145,12 @@ window.onload = function () {
         const prodName = cardInfo.querySelector("h3").textContent;
         const prodDescription = cardInfo.querySelector("card__text");
         const prodPrice = cardInfo.querySelector(".card__price").textContent;
-        const prodCategory = card.querySelector("category_indicator").getAttribute("data-category");
-        /* 
-        Lors de sélection de "Café en grains"
-        Si categorie de l'objet = café en grains
-        Afficher produit */
+        //const prodCategory = card.querySelector("category_indicator").getAttribute("data-category");
+        // Lors de sélection de "Café en grains" ; Si categorie de l'objet = café en grains ;  Afficher produit 
         let product = new Product(productId, prodName, prodImage, prodQuantity, prodPrice, prodDescription, prodCategory);
         
         products.push(product);
-    }
+    }*/
 
 
 //Utiliser les objets de l'array pour personnaliser la fonction saveProduct
