@@ -1,4 +1,5 @@
 window.onload = function () {
+    //Version locale
     let quantityElements = document.getElementsByClassName('card__quantity');
     let addOneQuantityButtons = document.getElementsByClassName('plus-btn');
     let minusOneQuantityButtons = document.getElementsByClassName('minus-btn');
@@ -147,7 +148,7 @@ window.onload = function () {
         const prodQuantity = cardInfo.querySelector(".card__quantity").textContent;
         const prodDescription = cardInfo.querySelector(".card__text");
         const prodPrice = cardInfo.querySelector(".card__price").textContent;
-        const prodCategory = cardElement.querySelector(".category_indicator").textContent;
+        const prodCategory = cardInfo.querySelector(".add-to-cart").getAttribute("data-category");
         //const prodCategory = cardElement.querySelector(".category_indicator").getAttribute("data-category");
         // Lors de sélection de "Café en grains" ; Si categorie de l'objet = café en grains ;  Afficher produit 
         let product = new Product(productId, prodName, prodImage, prodPrice, prodDescription, prodQuantity, prodCategory);
@@ -159,7 +160,63 @@ window.onload = function () {
 //Utiliser les objets de l'array pour personnaliser la fonction saveProduct
 
 console.log(products);
-productsContainer.addEventListener
+
+filtersBar.addEventListener('click', filterResults);
+filtersBar.products = products;
+
+function filterResults(e) {
+    let productsContainer = document.getElementsByClassName('grid-catalogue grid')[0];
+    let cardElements = document.getElementsByClassName('card grid');
+    
+    /* if(e.target.id === "tous-filter") { */
+        console.log(e.target, products.length);
+        for (let i = 0 ; i < products.length ; i++) {
+            let card = cardElements[i];
+
+            /* Code filtres general */
+            if (e.target.classList.contains("categories_filter")) {
+                /* Code filtre categories */
+            }
+            if(e.target.classList.contains("types_filter"))
+            {
+
+            }
+            if(e.target.classList.contains("price-range_filter")) {
+                
+            }
+
+            if(e.target.id === "tous-filter") { /* Si filtre Tous , tout afficher */
+                card.style.display = "grid";
+            }
+            if (e.target.id === "grains-filter" && products[i].category !== "Café en grains") {
+                card.style.display = "none"; /* Si filtre Grains et categ non grains , pas afficher */
+            }
+            else if (e.target.id === "grains-filter" && products[i].category === "Café en grains") {
+                card.style.display = "grid";
+            }
+
+            if (e.target.id === "moulu-filter" && products[i].category !== "Café moulu") {
+                card.style.display = "none"; /* Si filtre Grains et categ non grains , pas afficher */
+            }
+            else if (e.target.id === "moulu-filter" && products[i].category === "Café moulu") {
+                card.style.display = "grid";
+            }
+
+            if (e.target.id === "capsules-filter" && products[i].category !== "Café en capsules") {
+                card.style.display = "none"; /* Si filtre Grains et categ non grains , pas afficher */
+            }
+            else if (e.target.id === "capsules-filter" && products[i].category === "Café en capsules") {
+                card.style.display = "grid";
+            }
+            if (e.target.id === "dosettes-filter" && products[i].category !== "Café en dosettes") {
+                card.style.display = "none"; /* Si filtre Grains et categ non grains , pas afficher */
+            }
+            else if (e.target.id === "dosettes-filter" && products[i].category === "Café en dosettes") {
+                card.style.display = "grid";
+            }
+        }
+    /*} */
+}
 
     //----------------------------------------------------------------------  
 

@@ -48,27 +48,31 @@
     <aside id="aside-catalogue">
       <h2 class="h-manus">Filtres</h2>
       <div class="filters grid" id="filters-bar">
-        <input type="radio" name="filters-radio" id="tous-filter" class="col2" checked />
+        <input type="radio" name="category-radio" id="tous-filter" class="col2" checked />
         <label for="tous-filter" class="col3">Tous</label>
 
         <h3 class="col1">Catégories</h3>
-        <input type="radio" id="grains-filter" name="filters-radio" class="col2" />
+        <input type="radio" id="grains-filter" name="category-radio" class="col2 category-filter" />
         <label for="grains-filter" class="col3">Café en grains</label>
-        <input type="radio" id="moulu-filter" name="filters-radio" class="col2" />
+        <input type="radio" id="moulu-filter" name="category-radio" class="col2 category-filter" />
         <label for="moulu-filter" class="col3">Café moulu</label>
-        <input type="radio" id="capsules-filter" name="filters-radio" class="col2" />
+        <input type="radio" id="capsules-filter" name="category-radio" class="col2 category-filter" />
         <label for="capsules-filter" class="col3">Café en capsules</label>
-        <input type="radio" id="dosettes-filter" name="filters-radio" class="col2" />
+        <input type="radio" id="dosettes-filter" name="category-radio" class="col2 category-filter" />
         <label for="dosettes-filter" class="col3">Café en dosettes</label>
 
         <h3 class="col1">Type</h3>
+        <input type="radio" id="arabica-filter" name="type-radio" class="col2 type-filter" />
+        <label for="grains-filter" class="col3">Café en grains</label>
+        <input type="radio" id="moulu-filter" name="type-radio" class="col2 type-filter" />
+        <label for="moulu-filter" class="col3">Café moulu</label>
 
         <h3 class="col1">Prix</h3>
         <label for="min-filter" class="col2">Prix minimum</label>
-        <input type="range" id="min-filter" name="mil-filter" class="col1-to-5"/>  <!-- Modifier et creer classe col 1to4 si marche pas-->
+        <input type="range" id="min-filter" name="min-filter" class="col1-to-5 price-range-filter"/>  <!-- Modifier et creer classe col 1to4 si marche pas-->
 
         <label for="max-filter" class="col2">Prix maximum</label>
-        <input type="range" id="max-filter" name="max-filter" class="col1-to-5"/>
+        <input type="range" id="max-filter" name="max-filter" class="col1-to-5 price-range-filter"/>
       </div>
 
       <div class="suggestion-gauche">
@@ -96,13 +100,13 @@
               <button class="plus-btn">+</button><span class="card__quantity">0</span><button
                 class="minus-btn">-</button>
             </div>
-            <button class="card__btn add-to-cart" data-id="1">Add to Cart</button>
+            <button class="card__btn add-to-cart" data-id="1" data-category="Café en grains">Add to Cart</button>
             <div>
               <img src="#" alt="note-graincafe" />
               <span>4</span><span>/5</span>
             </div>
           </div>
-          <div class="category_indicator" style="background-color: black" data-category="Café en grains">
+          <div class="category_indicator" style="background-color: black" >
 
           </div>
         </div>
@@ -119,13 +123,13 @@
               <button class="plus-btn">+</button><span class="card__quantity">0</span><button
                 class="minus-btn">-</button>
             </div>
-            <button class="card__btn add-to-cart" data-id="2">Add to Cart</button>
+            <button class="card__btn add-to-cart" data-id="2" data-category="Café en capsules">Add to Cart</button>
             <div>
               <img src="#" alt="note-graincafe" />
               <span>4</span><span>/5</span>
             </div>
           </div>
-          <div class="category_indicator" style="background-color: grey" data-category="Café en capsules">
+          <div class="category_indicator" style="background-color: grey" >
 
           </div>
         </div>
@@ -140,13 +144,13 @@
             <div class="counter-div">
               <button class="plus-btn">+</button><span class="card__quantity">0</span><button class="minus-btn">+</button>
             </div>
-            <button class="card__btn add-to-cart" data-id="3">Add to Cart</button>
+            <button class="card__btn add-to-cart" data-id="3" data-category="Café en capsules">Add to Cart</button>
             <div>
               <img src="#" alt="note-graincafe" />
               <span>4</span><span>/5</span>
             </div>
           </div>
-          <div class="category_indicator" style="background-color: grey" data-category="Café en capsules">
+          <div class="category_indicator" style="background-color: grey">
 
           </div>
         </div>
@@ -163,9 +167,9 @@
               <button class="plus-btn">+</button><span class="card__quantity">0</span><button
                 class="minus-btn">+</button>
             </div>
-            <button class="card__btn add-to-cart" data-id="4">Add to Cart</button>
+            <button class="card__btn add-to-cart" data-id="4"  data-category="Café en dosettes">Add to Cart</button>
           </div>
-          <div class="category_indicator" style="background-color: white" data-category="Café en dosettes">
+          <div class="category_indicator" style="background-color: white">
 
           </div>
         </div>
@@ -181,9 +185,9 @@
               <button class="plus-btn">+</button><span class="card__quantity">0</span><button
                 class="minus-btn">+</button>
             </div>
-            <button class="card__btn add-to-cart" data-id="5">Add to Cart</button>
+            <button class="card__btn add-to-cart" data-id="5" data-category="Café en dosettes">Add to Cart</button>
           </div>
-          <div class="category_indicator" style="background-color: white" data-category="Café en dosettes">
+          <div class="category_indicator" style="background-color: white">
 
           </div>
         </div>
@@ -200,9 +204,9 @@
               <button class="plus-btn">+</button><span class="card__quantity">0</span><button
                 class="minus-btn">+</button>
             </div>
-            <button class="card__btn add-to-cart" data-id="6">Add to Cart</button>
+            <button class="card__btn add-to-cart" data-id="6" data-category="Café moulu">Add to Cart</button>
           </div>
-          <div class="category_indicator" style="background-color: brown"  data-category="Café moulu">
+          <div class="category_indicator" style="background-color: brown"  >
 
           </div>
         </div>
@@ -218,9 +222,9 @@
               <button class="plus-btn">+</button><span class="card__quantity">0</span><button
                 class="minus-btn">+</button>
             </div>
-            <button class="card__btn add-to-cart" data-id="7">Add to Cart</button>
+            <button class="card__btn add-to-cart" data-id="7" data-category="Café en grains">Add to Cart</button>
           </div>
-          <div class="category_indicator" style="background-color: black" data-category="Café en grains">
+          <div class="category_indicator" style="background-color: black">
 
           </div>
         </div>
@@ -237,9 +241,9 @@
               <button class="plus-btn">+</button><span class="card__quantity">0</span><button
                 class="minus-btn">+</button>
             </div>
-            <button class="card__btn add-to-cart" data-id="8">Add to Cart</button>
+            <button class="card__btn add-to-cart" data-id="8" data-category="Café en grains">Add to Cart</button>
           </div>
-          <div class="category_indicator" style="background-color: black" data-category="Café en grains"></div>
+          <div class="category_indicator" style="background-color: black" ></div>
         </div>
 
       </div>
