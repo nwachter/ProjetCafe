@@ -116,7 +116,7 @@ window.onload = function () {
 
     /* Filtres */
     class Product {
-        constructor(id, name, image, price, description, quantity = 0, category) {
+        constructor(id, name, image, price, description, quantity = 0, category, type) {
             this.id = id;
             this.name = name;
             this.image = image;
@@ -124,6 +124,7 @@ window.onload = function () {
             this.description = description;
             this.quantity = quantity;
             this.category = category;
+            this.type = type;
         }
 
         getQuantity() {
@@ -145,13 +146,13 @@ window.onload = function () {
         const productId = cardButton.getAttribute("data-id");
         const prodImage = cardElement.querySelector("img").src;
         const prodName = cardInfo.querySelector("h3").textContent;
-        const prodQuantity = cardInfo.querySelector(".card__quantity").textContent;
+        let prodQuantity = cardInfo.querySelector(".card__quantity").textContent;
         const prodDescription = cardInfo.querySelector(".card__text");
         const prodPrice = cardInfo.querySelector(".card__price").textContent;
         const prodCategory = cardInfo.querySelector(".add-to-cart").getAttribute("data-category");
-        //const prodCategory = cardElement.querySelector(".category_indicator").getAttribute("data-category");
-        // Lors de sélection de "Café en grains" ; Si categorie de l'objet = café en grains ;  Afficher produit 
-        let product = new Product(productId, prodName, prodImage, prodPrice, prodDescription, prodQuantity, prodCategory);
+        const prodType = cardInfo.querySelector(".add-to-cart").getAttribute("data-type");
+        
+        let product = new Product(productId, prodName, prodImage, prodPrice, prodDescription, prodQuantity, prodCategory, prodType);
         
         products.push(product);
     }
@@ -164,27 +165,42 @@ console.log(products);
 filtersBar.addEventListener('click', filterResults);
 filtersBar.products = products;
 
+
 function filterResults(e) {
     let productsContainer = document.getElementsByClassName('grid-catalogue grid')[0];
     let cardElements = document.getElementsByClassName('card grid');
     
     /* if(e.target.id === "tous-filter") { */
-        console.log(e.target, products.length);
+        console.log("Filtres");
         for (let i = 0 ; i < products.length ; i++) {
             let card = cardElements[i];
 
             /* Code filtres general */
-            if (e.target.classList.contains("categories_filter")) {
-                /* Code filtre categories */
+            if (e.target.classList.contains("categories-filter")) {
+                /* Placer ici Code filtre categories */
             }
-            if(e.target.classList.contains("types_filter"))
+            /* Filtres types */
+            if(e.target.classList.contains("type-filter"))
             {
+                if(e.target.id === "arabica-filter" && products[i].type !== "Arabica") {
+                   card.style.display = "none"; 
+                }
+                else if (e.target.id === "arabica-filter" && products[i].type === "Arabica") {
+                    card.style.display = "grid";
+                }
+                if(e.target.id === "robusta-filter" && products[i].type !== "Robusta") {
+                    card.style.display = "none"; 
+                 }
+                 else if (e.target.id === "robusta-filter" && products[i].type === "Robusta") {
+                     card.style.display = "grid";
+                 }
+            
+            /* Filtres prix */
+            }
+            if(e.target.classList.contains("price-range-filter")) {
 
             }
-            if(e.target.classList.contains("price-range_filter")) {
-                
-            }
-
+            /* _________________ _________________________________________*/
             if(e.target.id === "tous-filter") { /* Si filtre Tous , tout afficher */
                 card.style.display = "grid";
             }
