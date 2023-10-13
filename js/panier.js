@@ -46,7 +46,7 @@ window.onload = function () {
             ${product.name}
           </td>
           <td><span class="prices">${product.price}</span>€</td>
-          <td><input type="number" class="qt-product" style="width:20px" value=1 /></td>
+          <td><input type="number" class="qt-product" style="width:20px" value=${product.quantity} /></td>
           <td><button class="btn-danger remove-btn" data-id="${product.id}">Retirer</button></td>          
           </tr>
         `;
@@ -86,6 +86,30 @@ window.onload = function () {
     updateCartTotal();
   }
 
+  function removeProduct(productId) {
+    // remove product from cart (and from local storage)
+
+    // retrieve list of products from LS
+    const lsContent = getLSContent();
+
+    // get the index of the product item to remove
+    // inside the local storage content array
+    let productIndex;
+    lsContent.forEach(function (product, i) {
+      if (product.id === productId) {
+        productIndex = i;
+      }
+    });
+
+    // modify the items in local storage array
+    // to remove the selected product item
+
+    lsContent.splice(productIndex, 1);
+    // update local storage content
+    setLSContent(lsContent);
+
+    displayProducts();
+  }
 
 
   /* Evenements */
@@ -112,8 +136,13 @@ window.onload = function () {
   for (let i = 0; i < removeCartItemButtons.length; i++) {
     let button = removeCartItemButtons[i];  //creer var button pour chq bouton
     console.log(button);
-    button.addEventListener('click', removeCartItem);
-  }
+    button.addEventListener('click', function () { 
+      let productId = button.getAttribute('data-id');  //A getAttribute si marche pas
+      console.log(productId);
+      removeCartItem();
+      removeProduct(productId);
+  });
+}
 
   //Changement de quantités et update total
   for (let i = 0; i < quantityElements.length; i++) {

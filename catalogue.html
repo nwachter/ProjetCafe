@@ -48,31 +48,38 @@
     <aside id="aside-catalogue">
       <h2 class="h-manus">Filtres</h2>
       <div class="filters grid" id="filters-bar">
-        <input type="radio" name="category-radio" id="tous-filter" class="col2" checked />
-        <label for="tous-filter" class="col3">Tous</label>
 
         <h3 class="col1">Catégories</h3>
-        <input type="radio" id="grains-filter" name="category-radio" class="col2 category-filter" />
+        <div id="categoryContainer">
+        <input type="radio" name="category-radio" title="Tous" id="tous-filter" class="col2 category-filters" checked />
+        <label for="tous-filter" class="col3">Tous</label>
+        <input type="radio" id="grains-filter" name="category-radio" title="Café en grains" class="col2 category-filters" />
         <label for="grains-filter" class="col3">Café en grains</label>
-        <input type="radio" id="moulu-filter" name="category-radio" class="col2 category-filter" />
+        <input type="radio" id="moulu-filter" name="category-radio" title="Café moulu" class="col2 category-filters" />
         <label for="moulu-filter" class="col3">Café moulu</label>
-        <input type="radio" id="capsules-filter" name="category-radio" class="col2 category-filter" />
+        <input type="radio" id="capsules-filter" name="category-radio" title="Café en capsules" class="col2 category-filters" />
         <label for="capsules-filter" class="col3">Café en capsules</label>
-        <input type="radio" id="dosettes-filter" name="category-radio" class="col2 category-filter" />
+        <input type="radio" id="dosettes-filter" name="category-radio" title="Café en dosettes" class="col2 category-filters" />
         <label for="dosettes-filter" class="col3">Café en dosettes</label>
+        </div>
 
         <h3 class="col1">Type</h3>
-        <input type="radio" id="arabica-filter" name="type-radio" class="col2 type-filter" />
+        <div id="typeContainer">
+        <label for="all-type-filter" class="col3" >Tous</label>
+        <input type="radio" id="all-type-filter" name="type-radio" title="Tous" class="col2 type-filters" checked />
         <label for="arabica-filter" class="col3">Arabica</label>
-        <input type="radio" id="robusta-filter" name="type-radio" class="col2 type-filter" />
+        <input type="radio" id="arabica-filter" name="type-radio" title="Arabica" class="col2 type-filters" />
+        <label for="arabica-filter" class="col3">Arabica</label>
+        <input type="radio" id="robusta-filter" name="type-radio" title="Robusta" class="col2 type-filters" />
         <label for="robusta-filter" class="col3">Robusta</label>
+      </div>
 
         <h3 class="col1">Prix</h3>
         <label for="min-filter" class="col2">Prix minimum</label>
-        <input type="range" id="min-filter" name="min-filter" class="col1-to-5 price-range-filter"/>  <!-- Modifier et creer classe col 1to4 si marche pas-->
+        <input type="range" id="min-filter" name="min-filter" class="col1-to-5 price-range-filters" min="0" max="100" step="1" value="0"/>  <!-- Modifier et creer classe col 1to4 si marche pas-->
 
         <label for="max-filter" class="col2">Prix maximum</label>
-        <input type="range" id="max-filter" name="max-filter" class="col1-to-5 price-range-filter"/>
+        <input type="range" id="max-filter" name="max-filter" class="col1-to-5 price-range-filters" min="0" max="100" step="1" value="100"/>
       </div>
 
       <div class="suggestion-gauche">
@@ -118,7 +125,7 @@
             <p class="card__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut iusto
               eligendi consequatur vitae tempore veritatis est itaque eveniet repellendus.
             </p>
-            <p class="card__price">7.99</p>
+            <p class="card__price">16.99</p>
             <div class="counter-div">
               <button class="plus-btn">+</button><span class="card__quantity">0</span><button
                 class="minus-btn">-</button>
@@ -140,7 +147,7 @@
             <p class="card__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut iusto
               eligendi consequatur vitae tempore veritatis est itaque eveniet repellendus.
             </p>
-            <p class="card__price">7.99</p>
+            <p class="card__price">11.99</p>
             <div class="counter-div">
               <button class="plus-btn">+</button><span class="card__quantity">0</span><button class="minus-btn">+</button>
             </div>
@@ -162,7 +169,7 @@
             <p class="card__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut iusto
               eligendi consequatur vitae tempore veritatis est itaque eveniet repellendus.
             </p>
-            <p class="card__price">7.99</p>
+            <p class="card__price">6.99</p>
             <div class="counter-div">
               <button class="plus-btn">+</button><span class="card__quantity">0</span><button
                 class="minus-btn">+</button>
@@ -180,7 +187,7 @@
             <p class="card__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut iusto
               eligendi consequatur vitae tempore veritatis est itaque eveniet repellendus.
             </p>
-            <p class="card__price">7.99</p>
+            <p class="card__price">7.15</p>
             <div class="counter-div">
               <button class="plus-btn">+</button><span class="card__quantity">0</span><button
                 class="minus-btn">+</button>
@@ -199,7 +206,7 @@
             <p class="card__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut iusto
               eligendi consequatur vitae tempore veritatis est itaque eveniet repellendus.
             </p>
-            <p class="card__price">7.99</p>
+            <p class="card__price">8.45</p>
             <div class="counter-div">
               <button class="plus-btn">+</button><span class="card__quantity">0</span><button
                 class="minus-btn">+</button>
@@ -217,7 +224,7 @@
             <p class="card__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut iusto
               eligendi consequatur vitae tempore veritatis est itaque eveniet repellendus.
             </p>
-            <p class="card__price">7.99</p>
+            <p class="card__price">14.50</p>
             <div class="counter-div">
               <button class="plus-btn">+</button><span class="card__quantity">0</span><button
                 class="minus-btn">+</button>
@@ -236,7 +243,7 @@
             <p class="card__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut iusto
               eligendi consequatur vitae tempore veritatis est itaque eveniet repellendus.
             </p>
-            <p class="card__price">7.99</p>
+            <p class="card__price">9.99</p>
             <div class="counter-div">
               <button class="plus-btn">+</button><span class="card__quantity">0</span><button
                 class="minus-btn">+</button>
