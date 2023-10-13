@@ -7,12 +7,13 @@ window.onload = function () {
   var quantityElements = document.getElementsByClassName('qt-product');
   var totalElement = document.getElementById("total");
   let cartContent = document.getElementById("cart-content");
+  const checkoutButton = document.getElementById("checkout-btn");
   //empêcher que quantité arrive en dessous de 1 (event sur qt?)
 
-
+  console.log(getLSContent());
 
   //Affichage total
- // updateCartTotal();
+  // updateCartTotal();
   /*prices = priceElements.map(function (elem) {elem.innerText.replace('€', ''); parseFloat(elem.innerText)});
 
   priceElements.reduce(function (prev, next) {
@@ -35,18 +36,17 @@ window.onload = function () {
   function displayProducts() {
     let lsContent = getLSContent();
     let productsTextCode = "";
-    console.log("lscontent displayProd", lsContent);
     if (lsContent !== null) {
       for (let product of lsContent) {
         productsTextCode += `
           <tr class="products">
           <td><img src="${product.image}" alt="${product.name
           }"></td>
-          <td>
+          <td class="name-product">
             ${product.name}
           </td>
           <td><span class="prices">${product.price}</span>€</td>
-          <td><input type="number" class="qt-product" style="width:20px" value=${product.quantity} /></td>
+          <td><input type="number" class="qt-product" min="1" style="width:20px" value=${product.quantity} /></td>
           <td><button class="btn-danger remove-btn" data-id="${product.id}">Retirer</button></td>          
           </tr>
         `;
@@ -71,18 +71,21 @@ window.onload = function () {
     var total = 0;
     for (var i = 0; i < productRows.length; i++) {
       var price = parseFloat(priceElements[i].innerText.replace('€', ''));
+      price = parseFloat(priceElements[i].innerText.replace(',', '.'));
       var quantity = parseInt(quantityElements[i].value);
       total += parseFloat(price * quantity);
     }
-    totalElement.innerText = total + '€';
+    totalElement.innerText = total.toFixed(2) + '€';
 
   }
 
   //Retirer produit du panier
   function removeCartItem(event) {
-    var buttonClicked = event.target;
-    console.log(`clické ${event.target.parentElement}`);
+    let buttonClicked = event.target;
     buttonClicked.parentElement.parentElement.remove();
+    let productId = buttonClicked.getAttribute('data-id');
+
+    removeProduct(productId);
     updateCartTotal();
   }
 
@@ -108,48 +111,92 @@ window.onload = function () {
     // update local storage content
     setLSContent(lsContent);
 
-    displayProducts();
   }
 
+  //A Appeler quand clic sur Paiement (après e.preventDefault)
+  function saveFinalCart(e) {
+    e.preventDefault;
+    let lsContent = getLSContent();
+    for (let i = 0; i < productRows.length; i++) {
+      const productRow = productRows[i];
+      const btnRemove = productRow.querySelector('.btn-danger.remove-btn');
+      const productRowId = btnRemove.getAttribute('data-id');
+      const productRowQuantity = productRow.querySelector('.qt-product').value;
+      const productRowImage = productRow.getElementsByTagName('img')[0].src;
+      const productRowName = productRow.querySelector('.name-product').textContent;
+      const productRowPrice = productRow.querySelector('.prices').textContent;
+
+      console.log(productRowImage);
+
+
+      lsContent.forEach((product, i) => {
+        console.log(product.id, productRowId, i);
+        if (productRowId === product.id) {
+          if (productRowQuantity !== product.quantity) {
+            //on enleve l'ancienne entrée lsContent avec mauvaise quantité
+            lsContent.splice(i, 1);
+            //on met une nouvelle entrée du même produit
+            lsContent.push({
+              id: productRowId,
+              image: productRowImage,
+              name: productRowName,
+              price: productRowPrice,
+              quantity: productRowQuantity
+            });
+            // update local storage content avec la nouvelle entree avec bonne quantité
+            setLSContent(lsContent);
+          }
+        }
+      });
+    }
+
+    //Insérer TotalPanier dans LSContent ou similaire-___________________________________________!!!!!!!!!!!!!!!!!SUITE
+
+    //Refresh panier avec panier final (a supprimer quand le lien du bouton ira a Paiements)
+    cartContent.querySelector('tbody').innerHTML = "";
+    displayProducts();
+    console.log(lsContent);
+  }
+
+  function negativeQuantityBlocker(e) {
+    e.preventDefault;
+    if(e.target.value <= 1) {
+      e.target.value = 1;
+      alert('Pas de quantités négatives (afficher en haut du cart en *');
+    }
+    //ou onchange si value <= 1 mettre value à 1
+  }
 
   /* Evenements */
-//Declenche problème : plus aucun évènement ne fonctionne ; a corriger
+  //Declenche problème : plus aucun évènement ne fonctionne ; a corriger
 
   // Page load:
 
   if (document.readyState !== 'loading') {
     displayProducts();
     updateCartTotal();
-  } 
+  }
 
-
-  /*document.addEventListener("DOMContentLoaded", function (e) {
-    // display list of products in cart, if any, on page load
-    alert("Test");
-    displayProducts();
-    updateCartTotal();
-
-  });*/
+  checkoutButton.addEventListener('click', saveFinalCart);
+ 
 
 
   //Retirer produit du panier et update total
   for (let i = 0; i < removeCartItemButtons.length; i++) {
     let button = removeCartItemButtons[i];  //creer var button pour chq bouton
-    console.log(button);
-    button.addEventListener('click', function () { 
-      let productId = button.getAttribute('data-id');  //A getAttribute si marche pas
-      console.log(productId);
-      removeCartItem();
-      removeProduct(productId);
-  });
-}
+    button.addEventListener('click', removeCartItem);
+  }
 
   //Changement de quantités et update total
   for (let i = 0; i < quantityElements.length; i++) {
     let quantity = quantityElements[i];
     quantity.addEventListener('change', updateCartTotal);
-  }  
+  }
 
+  for (let i = 0 ; i< quantityElements.length ; i++) {
+    let quantityElement = quantityElements[i];
+    quantityElement.addEventListener('blur', negativeQuantityBlocker);
+  }
 
 
 }

@@ -50,7 +50,7 @@ window.onload = function () {
         const prodImage = card.querySelector("img").src;
         const prodName = cardInfo.querySelector("h3").textContent;
         const prodPrice = cardInfo.querySelector(".card__price").textContent;
-        const prodQuantity = cardInfo.querySelector(".card__quantity").textContent;
+        const prodQuantity = 1;
 
         let isProductInCart = false;
 
@@ -74,7 +74,8 @@ window.onload = function () {
                 id: productId,
                 image: prodImage,
                 name: prodName,
-                price: prodPrice
+                price: prodPrice,
+                quantity: prodQuantity
             });
 
             // add product into into local storage
@@ -86,18 +87,7 @@ window.onload = function () {
     }
 
  
-
-
-
-    // for (let i = 0; i < cardElements.length; i++) {
-    //     let minusButton = minusOneQuantityButtons[i];
-    //     //console.log(minusButton);
-    //     let plusButton = addOneQuantityButtons[i];
-
-    //     minusButton.addEventListener('click', removeOneQuantity);
-    //     plusButton.addEventListener('click', addOneQuantity);
-    // }
-
+/** Inutile pour le moment  */
 
     function removeOneQuantity(event) {
         let buttonClicked = event.target;
@@ -120,10 +110,10 @@ window.onload = function () {
         quantityElement.innerText = quantity;
 
     }
-
+/*           ____________________________________________________               */
     /* Filtres */
     class Product {
-        constructor(id, name, image, price, description, quantity = 0, category, type) {
+        constructor(id, name, image, price, description, quantity = 1, category, type) {
             this.id = id;
             this.name = name;
             this.image = image;
