@@ -1,5 +1,11 @@
 .cafe-coords-container {
     display:flex;
+    justify-content: space-evenly;
+}
+
+#map {
+    height: 40vh;           /* 400 300 base*/
+    width: 40vw;
 }
 
 #form-contact {

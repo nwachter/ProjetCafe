@@ -48,20 +48,15 @@ format() : ttf = truetype ; eot = N/A (IE9) ; woff, woff2, svg = idem ; eot = em
   'opsz' 24  /* optical size */
 }
 
-/*.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  grid-template-rows: max-content;
-  grid-column-gap: 1em;
-  grid-row-gap: 2em;
-}*/
-
 .grid {
   display: grid;
   grid-column-gap: 1em;
   grid-row-gap: 2em;
 }
 
+* {
+  font-size: 12px;
+}
 
 html {
   font-size: 10px;
@@ -274,8 +269,7 @@ nav {
   align-items: baseline;
 }
 
-#left-menu,
-#right-menu {
+#left-menu, #right-menu {
   /* width: 40%;
   height: 100%;
   flex:auto;*/

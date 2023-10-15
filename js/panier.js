@@ -15,6 +15,8 @@ window.onload = function () {
   const resetButton = document.getElementById('btn_reset');
   //empêcher que quantité arrive en dessous de 1 (event sur qt?)
 
+
+
   console.log(getLSContent("products"), getSSContent("userInfo"));
 
 

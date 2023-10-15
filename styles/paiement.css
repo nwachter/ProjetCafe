@@ -1,3 +1,12 @@
+/* Liste de produits */
+ul {
+    list-style-type: none;
+}
+
+#product-list {
+    font-family: 'Roboto';
+}
+
 /* Buttons */
 #confirm-checkout-btn {
     background-color: black;

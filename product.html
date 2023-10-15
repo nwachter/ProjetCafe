@@ -7,7 +7,7 @@ grille pour catalogue ? -->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Paiement</title>
+  <title>Détails Produit</title>
   <link href="styles/style.css" rel="stylesheet" type="text/css" />
   <link href="styles/paiement.css" rel="stylesheet" type="text/css" />
 
@@ -47,28 +47,32 @@ grille pour catalogue ? -->
       </nav>
     </header>
 
-    <main id="main-payment" class="main">
+    <main id="main-detail" class="main">
         <!-- Informations enregistrées du client -->
-        <div class="info-container">
+        <div class="product-container">
             <div id="user-info">
-              <p>Prénom : <span></span></p>
-              <p>Nom : <span></span></p>
-              <p>Adresse : <span></span></p>
-              <p>Ville : <span></span></p>
-              <p>Département : <span></span></p>
-              <p>Téléphone : <span></span></p>
-              <p>Ville : <span></span></p>
+                <h2>Café Single Origin du Costa Rica</h2>
+              <img src="./media/images/categories_cafe.avif">
             </div>
+
             <div class="payment-container">
-                <h2>Paiement</h2>
-                <div class="payment-list">
+                <h2>Product Info</h2>
+                <div class="product-info-bar">
+                    <div>Arabica [image]</div><div>Café en grains [image]</div>
                     <ul>
+                        <li class="option-element">Origine : <span>Costa Rica</span></li>
                         <li class="option-element">
-                            <input type="radio" id="credit-card" name="payment-radio" />
-                            <img src="./media/images/credit-cards.png" alt="PayPal" checked />
+                            <h3>Ingrédients du café</h3>
+                            <img src="./media/images/credit-cards.png" alt="PayPal" />
                             <span>Carte de crédit (VISA, ...)</span>
                         </li>
                         <li class="option-element">
+                            <input type="radio" id="paypal" name="payment-radio"/>
+                            <img src="./media/images/paypal.png" alt="PayPal" />
+                            <span>Paypal</span>
+                        </li>
+                        <li class="option-element">
+                            <h3>Force du café/goût/amertume</h3>
                             <input type="radio" id="paypal" name="payment-radio"/>
                             <img src="./media/images/paypal.png" alt="PayPal" />
                             <span>Paypal</span>
@@ -138,7 +142,7 @@ grille pour catalogue ? -->
     </footer>
     <!-- <script type="text/javascript" src="./js/script.js" async></script> -->
    
-    <script type="text/javascript" src="./js/paiement.js"></script>
+    <script type="text/javascript" src="./js/product.js"></script>
 
   </div>
 </body>
