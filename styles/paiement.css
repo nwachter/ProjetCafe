@@ -1,3 +1,12 @@
+/* Liste de produits */
+ul {
+    list-style-type: none;
+}
+
+#product-list {
+    font-family: 'Roboto';
+}
+
 /* Buttons */
 #confirm-checkout-btn {
     background-color: black;
@@ -28,22 +37,42 @@
 
 /* Main */
 
-#main-payment {
+.main-payment {
     display: grid;
     grid-template-columns: 3fr 2fr;
+
 }
 
-#main-payment > div {
+.main-payment > div {
+    border-radius: var(--bs-border-radius-xl);
     padding: 2em;
 }
+
+/*   Paiement Commande - Order Container   */
 /* Liste de paiements */
 
+.order-container {
+    background-color: var(--tangerine);
+}
 
-.option-element {
+
+.option-element > div {
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
-    flex : 1 10 5;
+    flex-wrap: nowrap;
+}
+
+.option-element > div > img {
+    height: 30px;
+}
+
+.product-element {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr max-content 0.5fr 2fr;
+    align-items: center;
+    align-content: center;
+    justify-items: end;
 }
 
 .subtotal, .delivery {

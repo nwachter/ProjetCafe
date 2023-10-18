@@ -22,30 +22,16 @@ grille pour catalogue ? -->
   <link href='https://fonts.googleapis.com/css?family=Allan&subset=latin' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Cherry+Cream+Soda&subset=latin' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Sonsie One' rel='stylesheet'>
-</head>
+  <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head> -->
 
 <body>
   <div id="body-container">
 
-    <!-- Header -->
-    <!-- <div id="css-grid">
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-  </div> -->
     <header>
       <div id="logo-slog">
-        <div id="logo">Café du Bien</div>
-        <div id="slogan">Ca fait du bien par où ça passe !</div>
+        <div id="logo">Sunset Café</div>
+        <div id="slogan">La chaleur du soleil, couleur crépuscule</div>
       </div>
       <nav id="menu">
         <div id="left-menu">
@@ -62,35 +48,41 @@ grille pour catalogue ? -->
       </nav>
     </header>
 
-    <main id="main-payment" class="main">
+    <main class="main-payment" class="main">
         <!-- Informations enregistrées du client -->
         <div class="info-container">
-            <div class="contact-info">
+            <div id="user-info" class="py-5">
 
             </div>
             <div class="payment-container">
-                <h2>Paiement</h2>
+                <h2>Options Paiement</h2>
                 <div class="payment-list">
                     <ul>
                         <li class="option-element">
-                            <input type="radio" id="credit-card" name="payment-radio" />
+                           <label for="credit-card">Carte de crédit (VISA, ...)</label>
+                           <div>
+                            <input type="radio" class="form-check-input" id="credit-card" name="payment-radio" />
                             <img src="./media/images/credit-cards.png" alt="PayPal" checked />
-                            <span>Carte de crédit (VISA, ...)</span>
+                            </div>
+                            
                         </li>
                         <li class="option-element">
+                          <label for="paypal">Paypal</label>
+                            <div>
                             <input type="radio" id="paypal" name="payment-radio"/>
                             <img src="./media/images/paypal.png" alt="PayPal" />
-                            <span>Paypal</span>
+                            </div>
+                           
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
         <!-- Résumé de la commande -->
-        <div class="recap-container">
-            <div class="product-list">
+        <div class="order-container">
+            <ul id="product-list">
 
-            </div>
+            </ul>
             <div class="subtotal"><span>Sous-total</span><span id="subtotal-amount"></span></div>
             <div class="delivery"><span>Livraison</span><span>3.99€</span></div>
             <hr>
@@ -146,7 +138,11 @@ grille pour catalogue ? -->
       <p>Copyright &copy; 2023</p>
     </footer>
     <!-- <script type="text/javascript" src="./js/script.js" async></script> -->
+   
     <script type="text/javascript" src="./js/paiement.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 
   </div>
 </body>

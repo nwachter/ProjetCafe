@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Page d'accueil</title>
   <link href="styles/style.css" rel="stylesheet" type="text/css" />
   <link href="styles/contact.css" rel="stylesheet" type="text/css" />
@@ -23,6 +23,14 @@
     rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href=" https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css ">
 
+ 
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
+
+
+  <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+
+
 </head>
 
 <body>
@@ -30,8 +38,8 @@
 
     <header>
       <div id="logo-slog">
-        <div id="logo">Café du Bien</div>
-        <div id="slogan">Ca fait du bien par où ça passe !</div>
+        <div id="logo">Sunset Café</div>
+        <div id="slogan">La chaleur du soleil, couleur crépuscule</div>
       </div>
       <nav id="menu">
         <div id="left-menu">
@@ -50,11 +58,9 @@
 
     <main id="contact-container" class="main-container">
 
-      <h1>Contact</h1><img src="media/images/dessin-cafe-transp.png" />
+      <h1>Contact</h1><!-- <img src="media/images/dessin-cafe-transp.png" /> -->
       <div class="cafe-coords-container">
-        <div class="localisation-map">
-          <img src="./media/images/maps.PNG" />
-        </div>
+        <div id='map'><!-- <img src="./media/images/maps.PNG" /> --></div>
         <div class="cafe-contact-card">
           <p>18 boulevard des Pyrénées</p>
           <p>64000 Pau</p>
@@ -129,8 +135,8 @@
       <p>Copyright &copy; 2023</p>
     </footer>
     <!-- <script type="text/javascript" src="./js/script.js" async></script> -->
-    <script type="text/javascript" src="./js/contact.js"></script>
-
+    <script type="text/javascript" src="./js/contact.js" async></script>
+       <script type="text/javascript" src="./js/contactMap.js" defer></script>
   </div>
 
 </body>

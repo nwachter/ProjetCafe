@@ -2,13 +2,18 @@
             Classy Holiday :
             Seashell F8EBE8
             Cinereous 8D7471 
-            Black Coffee 392F2D
+            --cincerous : #8D7471;
+            Black Coffee #392F2D
+            --black-coffee : #392F2D
             Pacific Blue 46b1c9
+            --pacific-blue : #46b1c9;
             Persian Indigo 320D6D
             Tyrian Purple 320d6d
 
             Tangerine F18700
+            --tangerine : #F18700
             Screamin Green 80FF72
+            --screamin-green : #80FF72
             lightseagreen     */
 
 
@@ -40,6 +45,23 @@ format() : ttf = truetype ; eot = N/A (IE9) ; woff, woff2, svg = idem ; eot = em
   font-weight: 600;
 }
 
+:root {
+  --seashell : #F8EBE8;
+  --light-brown : #BC6C25cb;
+  --dark-brown : #211409;
+  --moss-green : #606C38;
+  --cincerous : #8D7471;       
+  --black-coffee : #392F2D;
+  --pacific-blue : #46b1c9;
+  --tangerine : #F18700;
+  --screamin-green : #80FF72
+
+}
+
+* {
+  box-sizing: border-box;   /*_____________________________________________ BETA
+}
+
 .material-symbols-outlined {
   font-variation-settings:
   'FILL' 0,
@@ -48,20 +70,15 @@ format() : ttf = truetype ; eot = N/A (IE9) ; woff, woff2, svg = idem ; eot = em
   'opsz' 24  /* optical size */
 }
 
-/*.grid {
+/*.grid {                 -------------------------     DESACTIVATION GRID = BETA  BOOTSTRAP
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  grid-template-rows: max-content;
   grid-column-gap: 1em;
   grid-row-gap: 2em;
 }*/
 
-.grid {
-  display: grid;
-  grid-column-gap: 1em;
-  grid-row-gap: 2em;
+* {
+  font-size: 12px;
 }
-
 
 html {
   font-size: 10px;
@@ -72,6 +89,7 @@ html {
 
 ul {
   padding-inline-start: 0px;
+  padding-left: 0px !important;
 }
 
 img.cafe {
@@ -91,6 +109,14 @@ body {
   border: 0;
   outline: 0px;
   font-family: "Open Sans', sans-serif, "Helvetica";
+}
+
+h2 {
+  font-size: 2em;
+}
+
+h3 {
+  font-size: 1.5em;
 }
 
 #body-container {
@@ -207,7 +233,7 @@ div#slogan {
 
 
 
-main #dessin-cafe {
+#dessin-cafe {
   z-index: 4;
   width: 19%;
   height: auto;
@@ -229,7 +255,26 @@ div {
 
 }
 
+.error-container {
+  font-size: 2em;
+  display: grid;
+  height: 20vh;
+  width: 100vh;
+  color: var(--bs-danger);
+  border: var(--bs-danger-border-subtle);
+  background-color : var(--bs-danger-bg-subtle);
+  font-weight: bold;
+  text-align: center;
+  font-family: "Caudex", serif;
+  justify-items: center;
+  align-items: center;
+}
+
 /* Titres h */
+
+h1 {
+  font-size: 2.5rem;
+}
 
 .h-manus {
   font-family: "Corben", serif, "Caudex", serif;
@@ -274,8 +319,7 @@ nav {
   align-items: baseline;
 }
 
-#left-menu,
-#right-menu {
+#left-menu, #right-menu {
   /* width: 40%;
   height: 100%;
   flex:auto;*/

@@ -48,27 +48,38 @@
     <aside id="aside-catalogue">
       <h2 class="h-manus">Filtres</h2>
       <div class="filters grid" id="filters-bar">
-        <input type="radio" name="filters-radio" id="tous-filter" class="col2" checked />
-        <label for="tous-filter" class="col3">Tous</label>
 
         <h3 class="col1">Catégories</h3>
-        <input type="radio" id="grains-filter" name="filters-radio" class="col2" />
+        <div id="categoryContainer">
+        <input type="radio" name="category-radio" title="Tous" id="tous-filter" class="col2 category-filters" checked />
+        <label for="tous-filter" class="col3">Tous</label>
+        <input type="radio" id="grains-filter" name="category-radio" title="Café en grains" class="col2 category-filters" />
         <label for="grains-filter" class="col3">Café en grains</label>
-        <input type="radio" id="moulu-filter" name="filters-radio" class="col2" />
+        <input type="radio" id="moulu-filter" name="category-radio" title="Café moulu" class="col2 category-filters" />
         <label for="moulu-filter" class="col3">Café moulu</label>
-        <input type="radio" id="capsules-filter" name="filters-radio" class="col2" />
+        <input type="radio" id="capsules-filter" name="category-radio" title="Café en capsules" class="col2 category-filters" />
         <label for="capsules-filter" class="col3">Café en capsules</label>
-        <input type="radio" id="dosettes-filter" name="filters-radio" class="col2" />
+        <input type="radio" id="dosettes-filter" name="category-radio" title="Café en dosettes" class="col2 category-filters" />
         <label for="dosettes-filter" class="col3">Café en dosettes</label>
+        </div>
 
         <h3 class="col1">Type</h3>
+        <div id="typeContainer">
+        <label for="all-type-filter" class="col3" >Tous</label>
+        <input type="radio" id="all-type-filter" name="type-radio" title="Tous" class="col2 type-filters" checked />
+        <label for="arabica-filter" class="col3">Arabica</label>
+        <input type="radio" id="arabica-filter" name="type-radio" title="Arabica" class="col2 type-filters" />
+        <label for="arabica-filter" class="col3">Arabica</label>
+        <input type="radio" id="robusta-filter" name="type-radio" title="Robusta" class="col2 type-filters" />
+        <label for="robusta-filter" class="col3">Robusta</label>
+      </div>
 
         <h3 class="col1">Prix</h3>
         <label for="min-filter" class="col2">Prix minimum</label>
-        <input type="range" id="min-filter" name="mil-filter" class="col1-to-5"/>  <!-- Modifier et creer classe col 1to4 si marche pas-->
+        <input type="range" id="min-filter" name="min-filter" class="col1-to-5 price-range-filters" min="0" max="100" step="1" value="0"/>  <!-- Modifier et creer classe col 1to4 si marche pas-->
 
         <label for="max-filter" class="col2">Prix maximum</label>
-        <input type="range" id="max-filter" name="max-filter" class="col1-to-5"/>
+        <input type="range" id="max-filter" name="max-filter" class="col1-to-5 price-range-filters" min="0" max="100" step="1" value="100"/>
       </div>
 
       <div class="suggestion-gauche">
@@ -87,22 +98,22 @@
         <div class="card grid">
           <img src="./media/images/cafe.jpg" class="card__image" alt="">
           <div class="card__info">
-            <h3 class="card__title"><a href="#">Café Vanille du Rwanda</a></h3>
+            <h3 class="card__title"><a href="/produit.html">Café Vanille du Rwanda</a></h3>
             <p class="card__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut iusto
               eligendi consequatur vitae tempore veritatis est itaque eveniet repellendus.
             </p>
             <p class="card__price">7.99</p>
             <div class="counter-div">
-              <button class="plus-btn">+</button><span class="card__quantity">0</span><button
+              <button class="plus-btn">+</button><span class="card__quantity">1</span><button
                 class="minus-btn">-</button>
             </div>
-            <button class="card__btn add-to-cart" data-id="1">Add to Cart</button>
+            <button class="card__btn add-to-cart" data-id="1" data-category="Café en grains" data-type="Robusta">Add to Cart</button>
             <div>
               <img src="#" alt="note-graincafe" />
               <span>4</span><span>/5</span>
             </div>
           </div>
-          <div class="category_indicator" style="background-color: black" data-category="Café en grains">
+          <div class="category_indicator" style="background-color: black" >
 
           </div>
         </div>
@@ -110,43 +121,43 @@
         <div class="card grid">
           <img src="./media/images/cafe.jpg" class="card__image" alt="">
           <div class="card__info">
-            <h3 class="card__title"><a href="#">Café Single Origin du Costa Rica</a></h3>
+            <h3 class="card__title"><a href="/produit.html">Café Single Origin du Costa Rica</a></h3>
             <p class="card__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut iusto
               eligendi consequatur vitae tempore veritatis est itaque eveniet repellendus.
             </p>
-            <p class="card__price">7.99</p>
+            <p class="card__price">16.99</p>
             <div class="counter-div">
-              <button class="plus-btn">+</button><span class="card__quantity">0</span><button
+              <button class="plus-btn">+</button><span class="card__quantity">1</span><button
                 class="minus-btn">-</button>
             </div>
-            <button class="card__btn add-to-cart" data-id="2">Add to Cart</button>
+            <button class="card__btn add-to-cart" data-id="2" data-category="Café en capsules" data-type="Arabica">Add to Cart</button>
             <div>
               <img src="#" alt="note-graincafe" />
               <span>4</span><span>/5</span>
             </div>
           </div>
-          <div class="category_indicator" style="background-color: grey" data-category="Café en capsules">
+          <div class="category_indicator" style="background-color: grey" >
 
           </div>
         </div>
         <div class="card grid">
           <img src="./media/images/cafe.jpg" class="card__image" alt="">
           <div class="card__info">
-            <h3 class="card__title"><a href="#">Café Arabica du Kenya</a></h3>
+            <h3 class="card__title"><a href="/produit.html">Café Arabica du Kenya</a></h3>
             <p class="card__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut iusto
               eligendi consequatur vitae tempore veritatis est itaque eveniet repellendus.
             </p>
-            <p class="card__price">7.99</p>
+            <p class="card__price">11.99</p>
             <div class="counter-div">
-              <button class="plus-btn">+</button><span class="card__quantity">0</span><button class="minus-btn">+</button>
+              <button class="plus-btn">+</button><span class="card__quantity">1</span><button class="minus-btn">+</button>
             </div>
-            <button class="card__btn add-to-cart" data-id="3">Add to Cart</button>
+            <button class="card__btn add-to-cart" data-id="3" data-category="Café en capsules" data-type="Arabica">Add to Cart</button>
             <div>
               <img src="#" alt="note-graincafe" />
               <span>4</span><span>/5</span>
             </div>
           </div>
-          <div class="category_indicator" style="background-color: grey" data-category="Café en capsules">
+          <div class="category_indicator" style="background-color: grey">
 
           </div>
         </div>
@@ -158,14 +169,14 @@
             <p class="card__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut iusto
               eligendi consequatur vitae tempore veritatis est itaque eveniet repellendus.
             </p>
-            <p class="card__price">7.99</p>
+            <p class="card__price">6.99</p>
             <div class="counter-div">
-              <button class="plus-btn">+</button><span class="card__quantity">0</span><button
+              <button class="plus-btn">+</button><span class="card__quantity">1</span><button
                 class="minus-btn">+</button>
             </div>
-            <button class="card__btn add-to-cart" data-id="4">Add to Cart</button>
+            <button class="card__btn add-to-cart" data-id="4"  data-category="Café en dosettes" data-type="Robusta">Add to Cart</button>
           </div>
-          <div class="category_indicator" style="background-color: white" data-category="Café en dosettes">
+          <div class="category_indicator" style="background-color: white">
 
           </div>
         </div>
@@ -176,14 +187,14 @@
             <p class="card__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut iusto
               eligendi consequatur vitae tempore veritatis est itaque eveniet repellendus.
             </p>
-            <p class="card__price">7.99</p>
+            <p class="card__price">7.15</p>
             <div class="counter-div">
-              <button class="plus-btn">+</button><span class="card__quantity">0</span><button
+              <button class="plus-btn">+</button><span class="card__quantity">1</span><button
                 class="minus-btn">+</button>
             </div>
-            <button class="card__btn add-to-cart" data-id="5">Add to Cart</button>
+            <button class="card__btn add-to-cart" data-id="5" data-category="Café en dosettes" data-type="Robusta">Add to Cart</button>
           </div>
-          <div class="category_indicator" style="background-color: white" data-category="Café en dosettes">
+          <div class="category_indicator" style="background-color: white">
 
           </div>
         </div>
@@ -195,14 +206,14 @@
             <p class="card__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut iusto
               eligendi consequatur vitae tempore veritatis est itaque eveniet repellendus.
             </p>
-            <p class="card__price">7.99</p>
+            <p class="card__price">8.45</p>
             <div class="counter-div">
-              <button class="plus-btn">+</button><span class="card__quantity">0</span><button
+              <button class="plus-btn">+</button><span class="card__quantity">1</span><button
                 class="minus-btn">+</button>
             </div>
-            <button class="card__btn add-to-cart" data-id="6">Add to Cart</button>
+            <button class="card__btn add-to-cart" data-id="6" data-category="Café moulu" data-type="Arabica">Add to Cart</button>
           </div>
-          <div class="category_indicator" style="background-color: brown"  data-category="Café moulu">
+          <div class="category_indicator" style="background-color: brown"  >
 
           </div>
         </div>
@@ -213,14 +224,14 @@
             <p class="card__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut iusto
               eligendi consequatur vitae tempore veritatis est itaque eveniet repellendus.
             </p>
-            <p class="card__price">7.99</p>
+            <p class="card__price">14.50</p>
             <div class="counter-div">
-              <button class="plus-btn">+</button><span class="card__quantity">0</span><button
+              <button class="plus-btn">+</button><span class="card__quantity">1</span><button
                 class="minus-btn">+</button>
             </div>
-            <button class="card__btn add-to-cart" data-id="7">Add to Cart</button>
+            <button class="card__btn add-to-cart" data-id="7" data-category="Café en grains" data-type="Arabica">Add to Cart</button>
           </div>
-          <div class="category_indicator" style="background-color: black" data-category="Café en grains">
+          <div class="category_indicator" style="background-color: black">
 
           </div>
         </div>
@@ -228,18 +239,18 @@
         <div class="card grid">
           <img src="./media/images/cafe.jpg" class="card__image" alt="">
           <div class="card__info">
-            <h3 class="card__title"><a href="#">Café Fruité du Brésil</a></h3>
+            <h3 class="card__title"><a href="">Café Fruité du Brésil</a></h3>
             <p class="card__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut iusto
               eligendi consequatur vitae tempore veritatis est itaque eveniet repellendus.
             </p>
-            <p class="card__price">7.99</p>
+            <p class="card__price">9.99</p>
             <div class="counter-div">
-              <button class="plus-btn">+</button><span class="card__quantity">0</span><button
+              <button class="plus-btn">+</button><span class="card__quantity">1</span><button
                 class="minus-btn">+</button>
             </div>
-            <button class="card__btn add-to-cart" data-id="8">Add to Cart</button>
+            <button class="card__btn add-to-cart" data-id="8" data-category="Café en grains" data-type="Arabica">Add to Cart</button>
           </div>
-          <div class="category_indicator" style="background-color: black" data-category="Café en grains"></div>
+          <div class="category_indicator" style="background-color: black" ></div>
         </div>
 
       </div>

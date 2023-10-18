@@ -1,75 +1,137 @@
+<!-- tableau pour articles, idem pour paiement
+grille pour catalogue ? -->
+
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Page d'accueil</title>
+  <title>Détails Produit</title>
   <link href="styles/style.css" rel="stylesheet" type="text/css" />
-  <link href="styles/style-SAP.css" rel="stylesheet" type="text/css" />
+  <link href="styles/produit.css" rel="stylesheet" type="text/css" />
 
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100" rel="stylesheet" />
+  <!-- Google symboles en txt (modif weight ou autres)-->
   <link href='https://fonts.googleapis.com/css?family=Brawler&subset=latin' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Calligraffitti&subset=latin' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Bentham&subset=latin' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Corben&subset=latin' rel='stylesheet' type='text/css'>  
-  <link href='https://fonts.googleapis.com/css?family=Caudex&subset=latin' rel='stylesheet' type='text/css'>  
-  <link href='https://fonts.googleapis.com/css?family=Cabin&subset=latin' rel='stylesheet' type='text/css'>     
-  <link href='https://fonts.googleapis.com/css?family=Allan&subset=latin' rel='stylesheet' type='text/css'>      
+  <link href='https://fonts.googleapis.com/css?family=Corben&subset=latin' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Caudex&subset=latin' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Cabin&subset=latin' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Allan&subset=latin' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Cherry+Cream+Soda&subset=latin' rel='stylesheet' type='text/css'>
-  <link href="https://www.dafontfree.net/embed/c29uc2llLW9uZS1yZWd1bGFyJmRhdGEvMTkvcy85MjQ5OS9Tb25zaWVPbmUtUmVndWxhci5vdGY" rel="stylesheet" type="text/css"/>   
+  <link href='https://fonts.googleapis.com/css?family=Sonsie One' rel='stylesheet'>
 </head>
 
 <body>
-  <!-- Header -->
-  <header>
-    <div id="logo-slog">
-        <div id="logo">Sunset Café</div>
-        <div id="slogan">La chaleur du soleil, couleur crépuscule</div>
-    </div>    
-    <nav id="menu">
-      <div id="left-menu">
+  <div id="body-container">
+
+    <header>
+      <div id="logo-slog">
+        <div id="logo">Café du Bien</div>
+        <div id="slogan">Ca fait du bien par où ça passe !</div>
+      </div>
+      <nav id="menu">
+        <div id="left-menu">
           <a href="index.html" class="menu-elem">Accueil</a>
-          <a href="catalogue.html" class="menu-elem">Collection</a>
+          <a href="catalogue.html" class="menu-elem">Catalogue</a>
           <a href="contact.html" class="menu-elem">Contact</a>
-      </div>
-      <div id="right-menu">
+        </div>
+        <div id="right-menu">
           <a href="#" class="menu-elem">Connexion</a>
-          <a href="panier.html" class="menu-elem">Panier<img src="media/images/Shopping_basket.svg" id="panier" class="menu-elem" alt="ico-pan"></a>
+          <a href="panier.html" class="menu-elem">Panier<img src="media/images/Shopping_basket.svg" id="panier"
+              class="menu-elem" alt="ico-pan"></a>
+        </div>
+
+      </nav>
+    </header>
+
+    <main id="main-detail" class="main">
+      <!-- Informations enregistrées du client -->
+      
+      <div id="visuel-container">
+        <div><a href="catalogue.html">Retour au catalogue</a></div>
+        <h2 class="h2-manus">Café Single Origin du Costa Rica</h2>
+        <img src="./media/images/coffee-beans-black.jpg">
+        <p class="description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut cumque quae ea fuga id dolores sapiente ipsa, repudiandae laudantium nihil magnam minus eveniet cum optio iusto itaque! Modi, qui expedita!</p>
       </div>
-  
-    </nav>    
-  </header>
+
+      <div id="info-container">
+        <h3 class="h2-manus-green">Informations du Produit</h2>
+          <div class="info-bar">
+            <div class="icons">
+              <div class="type">Arabica</div><!--  [image-card]-->
+              <div class="category">Café en grains</div> <!-- [image-icone]-->
+            </div>
+            <ul class="info-list">
+              <li class="info-element"><h3>Origine</h3><span>Costa Rica</span></li>
+              <li class="info-element">
+                <h3>Caractéristiques</h3>
+                <p>Lorem ipsum</p>
+                <p>Lorem ipsum</p>
+                <p>Lorem ipsum</p>
+              </li>
+              <li class="info-element">
+                <h3>Force du café/goût/amertume</h3>
+                    <img src="#"><!-- Note en force (grain café/5)-->
+              </li>
+            </ul>
+            <button class="save-btn" data-id=1 >Ajouter au Panier</button>
+
+          </div>
+      </div>
 
 
-	    <div>	 
-            <div><a href="catalogue.html">Retour au catalogue</a></div>	          		
-		            <article>
-		            	<div class="details_sortie">
-			            	<h1 class="h-manus">Nom du produit</h1>
-							<div id="img-produit"><img style="width:300px;" src="image/jpeg;base64, cafe.jpg" /></div>			            	
-			            	<div>
-			                	<h3 class="h3-manus">Sous titre</h3>
-			                	<p>Descrip adresse
-			                	</p> 
-			            	</div>
-               		                
-			                <div>Description : Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa rem temporibus, aliquid iusto dicta obcaecati distinctio, reprehenderit alias blanditiis nihil veniam explicabo nam architecto laborum eos sunt laudantium accusamus sit.</div>
-			                <div><i>Prix</i></div>
-		                </div>
+    </main>
 
-		                <div class="participants">
-		                	<div><span>+=====</span>  1  <span>--------</span></div> <br>
+    <!-- Footer -->
+    <footer>
+      <div id="foot-container">
+        <div class="foot-list">
+          <h3>Nous découvrir</h3>
+          <ul>
+            <li>
+              <p>18 boulevard des Pyrénées</p>
+              <p>64000 Pau</p>
+              <p>05 59 88 24 18</p>
+              <p>contact@sunsetcoffee.fr</p>
 
-		                	<form method="POST" id="form_rejoindre" name="form_rejoindre">
-		                		<input type="submit" name="submit_rejoindre" id="submit_rejoindre" value="Ajouter au Panier">
-		                	</form>	
+            </li>
+          </ul>
+        </div>
+        <div class="foot-list">
+          <p>Suivez-nous sur les réseaux sociaux !</p>
+          <ul>
+            <li>
+              <p><a href="#"><img src="#" alt="fa-facebook"></a></p>
+              <p><a href="#"><img src="#" alt="fa-instagram"></a></p>
+              <p><a href="#"><img src="#" alt="tiktok"></a></p>
+              <p><a href="#"><img src="#" alt="fa-twitter"></a></p>
 
-		                </div> 	                               
-		                
-		            </article>	            
-		            
+            </li>
+          </ul>
+        </div>
+        <div class="foot-list">
+          <h3>Nous découvrir</h3>
+          <ul>
+            <li>
+              <p>18 boulevard des Pyrénées</p>
+              <p>64000 Pau</p>
+              <p>05 59 88 24 18</p>
+              <p>contact@sunsetcoffee.fr</p>
 
+            </li>
+          </ul>
+        </div>
+      </div>
+      <p>Copyright &copy; 2023</p>
+    </footer>
+    <!-- <script type="text/javascript" src="./js/script.js" async></script> -->
 
-	    </div>
+    <script type="text/javascript" src="./js/produit.js"></script>
+
+  </div>
 </body>
+
+</html>

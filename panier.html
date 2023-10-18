@@ -10,7 +10,6 @@ grille pour catalogue ? -->
   <title>Page d'accueil</title>
   <link href="styles/style.css" rel="stylesheet" type="text/css" />
   <link href="styles/panier.css" rel="stylesheet" type="text/css" />
-  <link href="styles/style-SAP.css" rel="stylesheet" type="text/css" />
 
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100" rel="stylesheet" />
   <!-- Google symboles en txt (modif weight ou autres)-->
@@ -23,26 +22,12 @@ grille pour catalogue ? -->
   <link href='https://fonts.googleapis.com/css?family=Allan&subset=latin' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Cherry+Cream+Soda&subset=latin' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Sonsie One' rel='stylesheet'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
 </head>
 
 <body>
   <div id="body-container">
-
-    <!-- Header -->
-    <!-- <div id="css-grid">
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-  </div> -->
     <header>
       <div id="logo-slog">
         <div id="logo">Café du Bien</div>
@@ -66,7 +51,9 @@ grille pour catalogue ? -->
     <main id="main-cart">
       <div id="div-coordonnees">
         <h2>Coordonnées</h2>
-        <form class="formulaire" id="form-coords" name="form-coords" action="paiement.html" method="POST">
+
+        <p class="error-message" style="grid-row: 2"></p>
+        <form class="formulaire" id="form-coords" name="form-coords" action="#" method="POST">
 
           <label for="util_prenom" class="form-col1">Prénom</label>
           <input type="text" class="form-col2" name="util_prenom" id="util_prenom">
@@ -79,10 +66,8 @@ grille pour catalogue ? -->
           <label for="util_ville" class="form-col3">Ville</label>
           <input type="text" class="form-col4" name="util_ville" id="util_ville">
 
-          <label for="util_region" class="form-col1">Région</label>
-          <input type="text" class="form-col2" name="util_region" id="util_region">
-          <label for="util_dpt" class="form-col3">Dpt</label>
-          <input type="text" class="form-col4" name="util_dpt" id="util_dpt">
+          <label for="util_dpt" class="form-col1">Dpt</label>
+          <input type="text" class="form-col2" name="util_dpt" id="util_dpt">
 
           <label for="util_telephone" class="form-col1">Téléphone</label>
           <input type="tel" class="form-col2" name="util_telephone" id="util_telephone">
@@ -90,7 +75,7 @@ grille pour catalogue ? -->
           <label for="util_mail" class="form-col1">Mail</label>
           <input type="tel" name="util_mail" class="form-col2" id="util_mail">
 
-          <div class="buttons form-col4" id="btns-coords">
+          <div class="buttons form-col3" id="btns-coords">
             <label for="btn_submit"></label>
             <input type="submit" id="btn_submit" value="Enregistrer" name="submit" class="save-btn">
 
@@ -107,25 +92,30 @@ grille pour catalogue ? -->
 
       <div class="div-cart">
         <h1>PANIER</h1>
-            <div id="shopping-cart" class="shopping-cart-container">
-              <table id="cart-content">
-                <thead>
-                  <tr>
-                    <th>Image</th>
-                    <th>Name</th>
-                    <th>Prices</th>
-                    <th>Quantity</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                </tbody>
-              </table>
-              <p class="total-container" id="total-price">Total: <span id="total">€</span></p>
-              <!-- Mettre boutons dans div et styler -->
-              <a href="paiement.html" id="checkout-btn" class="cart-btn checkout-btn">Paiement</a>
-              <a href="#" id="reset-btn" class="cart-btn reset-btn">Vider le panier</a>
-            </div>
+        <div id="shopping-cart" class="shopping-cart-container">
+          <table id="cart-content">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Prices</th>
+                <th>Quantity</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+          <div class="summary_buttons">
+            <p class="delivery-container" id="delivery-price">Livraison: <span id="delivery">2.99€</span></p>
+            <p class="subtotal-container" id="subtotal-price">Subtotal: <span id="subtotal">€</span></p>
+            <p class="total-container" id="total-price">Total: <span id="total">€</span></p>
+
+            <!-- Mettre boutons dans div et styler -->
+            <a href="#" id="checkout-btn" class="cart-btn checkout-btn">Paiement</a>
+            <a href="#" id="clear-btn" class="cart-btn reset-btn">Vider le panier</a>
+          </div>
+        </div>
       </div>
 
     </main>
@@ -172,8 +162,7 @@ grille pour catalogue ? -->
       </div>
       <p>Copyright &copy; 2023</p>
     </footer>
-    <!-- <script type="text/javascript" src="./js/script.js" async></script>
-    <script type="text/javascript" src="./js/cart.js" async></script> -->
+    <!-- <script type="text/javascript" src="./js/script.js" async></script> -->
     <script type="text/javascript" src="./js/panier.js"></script>
 
   </div>

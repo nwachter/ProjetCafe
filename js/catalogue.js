@@ -1,4 +1,5 @@
 window.onload = function () {
+    //Version locale
     let quantityElements = document.getElementsByClassName('card__quantity');
     let addOneQuantityButtons = document.getElementsByClassName('plus-btn');
     let minusOneQuantityButtons = document.getElementsByClassName('minus-btn');
@@ -6,6 +7,12 @@ window.onload = function () {
     let addToCartButtons = document.getElementsByClassName('card__btn');
     let productsContainer = document.getElementsByClassName('grid-catalogue grid')[0];
     let filtersBar = document.getElementById("filters-bar");
+    const categoryFilters = document.querySelectorAll('.category-filters');
+    const typeFilters = document.querySelectorAll('.type-filters');
+    const minPriceFilter = document.getElementById('min-filter');
+    const maxPriceFilter = document.getElementById('max-filter');
+    const categoryContainer = document.getElementById('categoryContainer');
+    const typeContainer = document.getElementById('typeContainer');
 
     //console.log("LSContent", getLSContent());
 
@@ -43,6 +50,7 @@ window.onload = function () {
         const prodImage = card.querySelector("img").src;
         const prodName = cardInfo.querySelector("h3").textContent;
         const prodPrice = cardInfo.querySelector(".card__price").textContent;
+        const prodQuantity = 1;
 
         let isProductInCart = false;
 
@@ -66,7 +74,8 @@ window.onload = function () {
                 id: productId,
                 image: prodImage,
                 name: prodName,
-                price: prodPrice
+                price: prodPrice,
+                quantity: prodQuantity
             });
 
             // add product into into local storage
@@ -77,19 +86,8 @@ window.onload = function () {
         }
     }
 
-
-
-
-
-    // for (let i = 0; i < cardElements.length; i++) {
-    //     let minusButton = minusOneQuantityButtons[i];
-    //     //console.log(minusButton);
-    //     let plusButton = addOneQuantityButtons[i];
-
-    //     minusButton.addEventListener('click', removeOneQuantity);
-    //     plusButton.addEventListener('click', addOneQuantity);
-    // }
-
+ 
+/** Inutile pour le moment  */
 
     function removeOneQuantity(event) {
         let buttonClicked = event.target;
@@ -112,10 +110,10 @@ window.onload = function () {
         quantityElement.innerText = quantity;
 
     }
-
+/*           ____________________________________________________               */
     /* Filtres */
     class Product {
-        constructor(id, name, image, price, description, quantity = 0, category) {
+        constructor(id, name, image, price, description, quantity = 1, category, type) {
             this.id = id;
             this.name = name;
             this.image = image;
@@ -123,6 +121,7 @@ window.onload = function () {
             this.description = description;
             this.quantity = quantity;
             this.category = category;
+            this.type = type;
         }
 
         getQuantity() {
@@ -135,31 +134,111 @@ window.onload = function () {
     }
 
     // Classe Produits 
-    products = [];
+    let products = [];
 
-    for (let i = 0 ; i < cardElements.length ; i++) {
+    for (let i = 0; i < cardElements.length; i++) {
         const cardElement = document.getElementsByClassName('card grid')[i];
         const cardInfo = cardElement.querySelector('.card__info');
         const cardButton = cardElement.querySelector('.add-to-cart');
         const productId = cardButton.getAttribute("data-id");
         const prodImage = cardElement.querySelector("img").src;
         const prodName = cardInfo.querySelector("h3").textContent;
-        const prodQuantity = cardInfo.querySelector(".card__quantity").textContent;
-        const prodDescription = cardInfo.querySelector(".card__text");
+        let prodQuantity = cardInfo.querySelector(".card__quantity").textContent;
+        const prodDescription = cardInfo.querySelector(".card__text").textContent;
         const prodPrice = cardInfo.querySelector(".card__price").textContent;
-        const prodCategory = cardElement.querySelector(".category_indicator").textContent;
-        //const prodCategory = cardElement.querySelector(".category_indicator").getAttribute("data-category");
-        // Lors de sélection de "Café en grains" ; Si categorie de l'objet = café en grains ;  Afficher produit 
-        let product = new Product(productId, prodName, prodImage, prodPrice, prodDescription, prodQuantity, prodCategory);
-        
+        const prodCategory = cardInfo.querySelector(".add-to-cart").getAttribute("data-category");
+        const prodType = cardInfo.querySelector(".add-to-cart").getAttribute("data-type");
+
+        let product = new Product(productId, prodName, prodImage, prodPrice, prodDescription, prodQuantity, prodCategory, prodType);
+
         products.push(product);
     }
 
 
-//Utiliser les objets de l'array pour personnaliser la fonction saveProduct
+    //Utiliser les objets de l'array pour personnaliser la fonction saveProduct
 
-console.log(products);
-productsContainer.addEventListener
+    console.log(products);
+
+    //filtersBar.addEventListener('click', filterResults);
+    //filtersBar.products = products;
+    categoryContainer.products = products;
+    typeContainer.products = products;
+    minPriceFilter.products = products;
+    maxPriceFilter.products = products;
+
+    // Ajoutez des écouteurs d'événements aux filtres
+    categoryContainer.addEventListener('change', filterProducts);
+
+    typeContainer.addEventListener('change', filterProducts);
+
+    minPriceFilter.addEventListener('input', filterProducts);
+    maxPriceFilter.addEventListener('input', filterProducts);
+
+
+
+    function filterProducts(e) {
+        const categoryFilters = document.querySelectorAll('.category-filters');
+        const typeFilters = document.querySelectorAll('.type-filters');
+        let selectedCategory;
+        let selectedType;
+
+        categoryFilters.forEach((filter) => {
+            if(filter.checked) {
+                selectedCategory = filter;
+                selectedCategory = selectedCategory.getAttribute('title');
+            }
+        });
+       
+       
+        typeFilters.forEach((filter) => {
+            if(filter.checked) {
+                selectedType = filter;
+                selectedType = selectedType.getAttribute('title');
+            }
+        });
+       
+        
+        //const selectedCategory = Array.from(categoryFilters)
+            //.filter((filter) => filter.checked)
+            //.map((filter) => filter.getAttribute('data-category'));
+        //const selectedType = Array.from(typeFilters)
+            //.filter((filter) => filter.checked)
+           // .map((filter) => filter.getAttribute('data-type'));
+        const minPrice = parseFloat(minPriceFilter.value);
+        const maxPrice = parseFloat(maxPriceFilter.value);
+        console.log("Selected filters : ", selectedCategory, selectedType, minPrice, maxPrice);
+
+        products.forEach((product) => {
+            let cardElement;
+            Array.from(cardElements).forEach((element, index) => {
+                let cardTitle = element.querySelector(".card__title").textContent;
+                if (cardTitle === product.name) {
+                    cardElement = element;
+                }    
+            });
+            console.log("cardElement : ", cardElement);
+
+            /*const category = product.querySelector('.card__btn').getAttribute('data-category');
+            const type = product.querySelector('.card__btn').getAttribute('data-type');
+            const price = parseFloat(product.querySelector('.card__price').textContent);*/
+            const category = product.category;
+            const type = product.type;
+            const price = product.price;
+            console.log("Produit x : ", product, selectedCategory);
+
+            const categoryMatch = selectedCategory.includes(category) || selectedCategory.includes('Tous') || selectedCategory === undefined;
+            const typeMatch = selectedType.includes(type) || selectedType.includes('Tous') || selectedType === undefined;
+            const priceMatch = price >= minPrice && price <= maxPrice;
+
+            if (categoryMatch && typeMatch && priceMatch) {
+                cardElement.style.display = 'grid';
+            } else {
+                cardElement.style.display = 'none';
+            }
+        });
+    }
+
+
 
     //----------------------------------------------------------------------  
 

@@ -1,3 +1,6 @@
+
+window.onload = function() {
+
   var formOrganiser = document.getElementById('form_organiser');
   var sorIntitule = document.getElementById('sor_intitule');
   var sorLieu = document.getElementById('sor_lieu');
@@ -19,48 +22,41 @@
   var errorResume = document.getElementById('error_resume');
   let isValid = true;
 
+  ///Fonctions Sunset Coffee _________________________
+
+
+  function setLSContent(lsContent, key = "products") {
+    localStorage.setItem(key, JSON.stringify(lsContent));
+  }
+
+  function getLSContent(key = "products") {
+    // get contents from local storage.
+    // if nothing is there, create an empty array
+    const lsContent = JSON.parse(localStorage.getItem(key)) || [];
+    return lsContent;
+  }
+
+  function setSSContent(ssContent, key = "userInfo") {
+    sessionStorage.setItem(key, JSON.stringify(ssContent));
+  }
+
+  function getSSContent(key = "userInfo") {
+    const ssContent = JSON.parse(sessionStorage.getItem(key)) || [];
+    return ssContent;
+  }
+
+
+  //_______________________________________
+
+
   function calculateTotal(prices) {
     // calculate the total price in the cart
     return prices.reduce(function(prev, next) {
       return prev + next;
     }, 0);
-  }
-
-window.onload = function() {
-
-
- 
-
-  sorResume.addEventListener('change', function(event) {
-    if(!regexResume.test(sorResume.value)) {
-      sorResume.classList.add('invalidInput');
-      disableSubmit(true);
-      errorResume.innerText = "";
-      errorResume.innerText += "Résumé de la sortie trop court ou contenant des caractères invalides";
-    }
-    else {
-      sorResume.classList.remove('invalidInput');
-      disableSubmit(false);
-      errorResume.innerText = "";
-    }
-
-  });
-
-  btnSubmitSortie.addEventListener('click', function(event) {
-
-    if(!regexIntitule.test(sorIntitule.value) || !regexResume.test(sorResume.value) || !regexHeure.test(sorHeure.value) || !regexDate.test(sorDate.value)) {
-      event.preventDefault();
-    }
-    else {
-      return true;
-    }
-
-  });        
-
-}
-
-
-function validateForm() {
+  } 
+  
+  function validateForm() {
     let utilPseudo = document.getElementById("util_pseudo");
     let utilPassword = document.getElementById("util_password");
     let utilConfirm = document.getElementById("util_confirm");
@@ -245,4 +241,39 @@ function disableSubmit(disabled) {
       .removeAttribute("disabled");
   }
 }
+
+ 
+
+
+  // EVENEMENTS _________________________________________________________________________________
+
+  sorResume.addEventListener('change', function(event) {
+    if(!regexResume.test(sorResume.value)) {
+      sorResume.classList.add('invalidInput');
+      disableSubmit(true);
+      errorResume.innerText = "";
+      errorResume.innerText += "Résumé de la sortie trop court ou contenant des caractères invalides";
+    }
+    else {
+      sorResume.classList.remove('invalidInput');
+      disableSubmit(false);
+      errorResume.innerText = "";
+    }
+
+  });
+
+  btnSubmitSortie.addEventListener('click', function(event) {
+
+    if(!regexIntitule.test(sorIntitule.value) || !regexResume.test(sorResume.value) || !regexHeure.test(sorHeure.value) || !regexDate.test(sorDate.value)) {
+      event.preventDefault();
+    }
+    else {
+      return true;
+    }
+
+  });  
+
+}
+
+export {getLSContent, setLSContent, getSSContent, setSSContent};
 
