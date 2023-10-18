@@ -10,12 +10,12 @@
 #div-coordonnees {
     position: relative;
     /*overflow: hidden;   Le formulaire depasse de sa "case" et le bout est caché si overflow hidden, le form prend toute sa largeur*/    
-    margin: 2em;
     padding: 2em;
     border-radius: 10px;
     display: grid;
     justify-items: start;
     justify-content: space-around;
+    width: 100%;
 }
 
 #div-coordonnees:before {
@@ -23,7 +23,7 @@
     background: url("../media/images/orange-bg.jpg"), rgba(248, 121, 3, 0.795) 50% / cover no-repeat;
     content: '';
     z-index: -1;
-    opacity: 0.35;
+    opacity: 0.20;
     width: 100%;
     height: 100%;
     background-position: 70% 30%;
@@ -35,15 +35,23 @@
     display: none;
     color: red;
     padding: 5px 5px;
+    background-color: var( --bs-danger-bg-subtle);
+    border: var(--bs-danger-border-subtle) solid 1px;
+}
+
+
+.formulaire > .error-message {
+    grid-row: 2;
 }
 
 #form-coords {
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr 2fr;
-    grid-template-rows: repeat(6, 1fr);
-    grid-row: 2;
-    justify-items: center;
+    grid-template-columns: repeat(4, minmax(20px, auto));
+    grid-template-rows: repeat(6, minmax(20px, 40px));
+    grid-row: 3;
+    justify-items: start;
     align-items: center;
+    grid-column-gap: 8px;
 }
 
 
@@ -88,6 +96,16 @@ form.formulaire select {
     /* border: 1px solid #ccc; */
     border-radius: 4px;
     box-sizing: border-box;
+}
+
+
+
+.buttons {
+    display: block;
+    grid-row: 6;
+    grid-column: 2;
+    display: flex;
+    margin: 1rem 0rem 1rem 0rem;
 }
 
 
@@ -181,13 +199,13 @@ form.formulaire input[type=reset]:active, .reset-btn:active, .remove-btn:active 
 }
 
 /* Enregistrer button */
-.save-btn {
+.formulaire input[type=submit], .save-btn {
 	box-shadow:inset 0px 1px 0px 0px #fce2c1;
 	background:linear-gradient(to bottom, #ffc477 5%, #fb9e25 100%);
 	background-color:#ffc477;
 	border-radius:6px;
 	border:1px solid #eeb44f;
-	display:inline-block;
+	display:inline;
 	cursor:pointer;
 	color:#ffffff;
 	font-family:Trebuchet MS;

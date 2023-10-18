@@ -1,12 +1,14 @@
 window.onload = function () {
-
+  const mainContainer = document.getElementsByTagName('main')[0];
   var removeCartItemButtons = document.getElementsByClassName('btn-danger remove-btn');
+  const inputElements = document.querySelectorAll("input");
   var productRows = document.getElementsByClassName('products');
   var priceElements = document.getElementsByClassName('prices');
   //var total = document.getElementById("total");
   var quantityElements = document.getElementsByClassName('qt-product');
   var totalElement = document.getElementById("total");
-  let subTotalElement = document.getElementById("subtotal");
+  const subTotalElement = document.getElementById("subtotal");
+  const deliveryElement = document.getElementById("delivery");
   let cartContent = document.getElementById("cart-content");
   const checkoutButton = document.getElementById("checkout-btn");
   const clearCartButton = document.getElementById("clear-btn");
@@ -17,8 +19,7 @@ window.onload = function () {
 
 
 
-  console.log(getLSContent("products"), getSSContent("userInfo"));
-
+  console.log(getLSContent("products"), localStorage.getItem("total"), sessionStorage.getItem("userInfo"));
 
 
   function setLSContent(lsContent, key = "products") {
@@ -57,7 +58,7 @@ window.onload = function () {
             ${product.name}
           </td>
           <td><span class="prices">${product.price}</span>€</td>
-          <td><input type="number" class="qt-product" min="1" style="width:20px" value=${product.quantity} /></td>
+          <td><input type="number" class="qt-product" min="1" style="width:30px" value=${product.quantity} /></td>
           <td><button class="btn-danger remove-btn" data-id="${product.id}">Retirer</button></td>          
           </tr>
         `;
@@ -82,14 +83,13 @@ window.onload = function () {
       tBody.innerText = "";
       localStorage.clear();
       displayProducts();
-    } 
+    }
   }
 
 
   //Affichage total
   function updateCartTotal() {
     const deliveryElement = document.getElementById("delivery");
-    var productsContainer = document.getElementById(''); //pour acceder aux parents et child si besoin ds un event
     // var productRows = document.getElementsByClassName('products');
     // var priceElements = document.getElementsByClassName('prices');
     // var quantityElements = document.getElementsByClassName('qt-product');
@@ -155,16 +155,24 @@ window.onload = function () {
 
   //Effacer/Reset Informations enregistrées par l'utilisateur
   function resetSavedUserInfo(e) {
+    console.log("Debut fct");
+
+    for (let i = 0; i < inputElements.length; i++) {
+      inputElements[i].disabled = false;
+    }
     errorMessageElements[0].style.display = "none";
     errorMessageElements.innerText = "";
     let ssContent = getSSContent();
     let isEmpty = (ssContent["userInfo"]);
-    console.log(ssContent["userInfo"], sessionStorage.getItem("userInfo"));
-    if (!(ssContent["userInfo"] !== undefined) && !(sessionStorage.getItem("userInfo") != null)) {
+    console.log("Infos Reset : ",sessionStorage.getItem("userInfo"));
+    if (sessionStorage.getItem("userInfo") == null) {
       e.preventDefault();
+      console.log("Storage ne contient pas d'infos");
+
       return false;
     }
     else {  // si storage contient infos
+      console.log("Storage Contient infos");
       sessionStorage.removeItem("userInfo");
       errorMessageElements[0].style.display = "inline-block";
       errorMessageElements[0].innerText = "Vos coordonnées ont été supprimées.";
@@ -175,13 +183,10 @@ window.onload = function () {
     e.preventDefault();
     errorMessageElements[0].style.display = "none";
     errorMessageElements[0].innerText = "";
-    
-    const inputElements = formCoords.querySelectorAll("input");
-    errorMessageElements[0].style.display = "none";
 
     //Si informations déjà enregistrées
     let ssContent = getSSContent("userInfo");
-    if ((ssContent["userInfo"] !== null) && (sessionStorage.getItem("userInfo") != null)) {
+    if (sessionStorage.getItem("userInfo") != null) { 
       errorMessageElements[0].innerText = "Informations déjà enregistrées. Cliquer sur Reset pour les effacer.";
       errorMessageElements[0].style.display = 'inline-block';
       return false;
@@ -191,8 +196,7 @@ window.onload = function () {
     let isEmpty;
     let userInfoArray = [];
 
-    //Dans SortirAPau, utiliser le script pour contrôle des coordonnées __________________________ A Faire
-    //
+    //Contrôle des coordonnées ___________________________________________________
     for (let i = 0; i < inputElements.length; i++) {
       if (inputElements[i].value == "") {
         isEmpty = true;
@@ -225,9 +229,13 @@ window.onload = function () {
     else {
       errorMessageElements[0].style.display = 'inline-block';
       errorMessageElements[0].innerText = "*Veuillez entrer vos coordonnées.";
+      return false;
 
     }
-
+    //Desactiver Champs
+    for (let i = 0; i < inputElements.length-2; i++) {
+      inputElements[i].disabled = "disabled";
+    }
     //Vider le form
     /*inputElements.forEach(function (element, i) {
       element.value = "";
@@ -251,7 +259,6 @@ window.onload = function () {
       const productRowImage = productRow.getElementsByTagName('img')[0].src;
       const productRowName = productRow.querySelector('.name-product').textContent;
       const productRowPrice = productRow.querySelector('.prices').textContent;
-
       //Actualiser page si quantité < 1
       if (productRowQuantity < 1) {
         //actualiser 
@@ -279,17 +286,39 @@ window.onload = function () {
         }
       });
     }
-    //Insérer TotalPanier dans LSContent 
-    let lsContent2 = getLSContent("total");
-    const cartTotal = parseFloat(totalElement.innerText);
-    setLSContent(cartTotal, "total");
 
-    //Refresh panier avec panier final (a supprimer quand le lien du bouton ira a Paiements)
-    cartContent.querySelector('tbody').innerHTML = "";
-    displayProducts();
-    
-    //Redirection vers Paiement , puis Paiement ----------------------------------- A FAIIIIIIIIIIIIIIIIIIIIIIIIRE
-    window.location.href = "./paiement.html";
+    //Insérer TotalPanier dans LSContent  SI PAS DEJA DEDANS
+    if (localStorage.getItem("total") != null) {
+      localStorage.removeItem("total");
+      mainContainer.innerHTML = "Erreur. Rechargement de la page...";
+      mainContainer.classList.toggle("error-container");
+      window.location.reload();
+    }
+    else {
+
+      let lsContent2 = getLSContent("total");
+      const cartTotal = {
+        subtotal: parseFloat(formatPrice(subTotalElement)),
+        delivery: parseFloat(formatPrice(deliveryElement)),
+        total: parseFloat(formatPrice(totalElement))
+      }
+      lsContent2.push(cartTotal);
+
+      setLSContent(cartTotal, "total");
+
+      //Refresh panier avec panier final (a supprimer quand le lien du bouton ira a Paiements)
+      cartContent.querySelector('tbody').innerHTML = "";
+      displayProducts();
+
+      //Redirection vers Paiement , puis Paiement ----------------------------------- A FAIIIIIIIIIIIIIIIIIIIIIIIIRE
+      window.location.href = "./paiement.html";
+    }
+
+  }
+
+  function displayErrorMessages (message) {
+    errorMessageElements[0].style.display = "inline-block";
+    errorMessageElements[0].innerText = message;
 
   }
 
@@ -310,6 +339,17 @@ window.onload = function () {
   if (document.readyState !== 'loading') {
     displayProducts();
     updateCartTotal();
+    //Si les coordonnées de l'util existent déjà, griser les champs 
+    if(sessionStorage.getItem("userInfo") != null) {
+      for(let i = 0 ; inputElements.length-2 < i ; i++ ) {
+        element.disabled = "disabled";
+      }
+      displayErrorMessages("Informations déjà enregistrées. Cliquez sur Reset pour les modifier.");
+      //Suppression de total si il existe déjà
+      if(localStorage.getItem("total") != null) {
+        localStorage.removeItem("total");
+      }
+    }
   }
 
   checkoutButton.addEventListener('click', saveFinalCart);

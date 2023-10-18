@@ -1,5 +1,4 @@
 
-
 window.onload = function() {
 
   var formOrganiser = document.getElementById('form_organiser');
