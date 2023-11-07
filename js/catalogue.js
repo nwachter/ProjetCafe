@@ -16,7 +16,7 @@ window.onload = function () {
 
     //console.log("LSContent", getLSContent());
 
-    //Ajouter/Retirer quantités  ------------> A SUPPRIMER POSSIBLEMENT
+
     [...cardElements].forEach(function (cardElement) {
 
         let minusButton = cardElement.getElementsByClassName('minus-btn')[0];
@@ -32,8 +32,6 @@ window.onload = function () {
     }
 
     function getLSContent() {
-        // get contents from local storage.
-        // if nothing is there, create an empty array
         const lsContent = JSON.parse(localStorage.getItem("products")) || [];
         return lsContent;
     }
@@ -54,21 +52,19 @@ window.onload = function () {
 
         let isProductInCart = false;
 
-        // get local storage array
+
         const lsContent = getLSContent();
 
-        // to avoid user adds the same course twice, check
-        // the product is not in LS already before adding it
+
+        // Vérifie si le produit est deja dans le panier
         lsContent.forEach(function (product) {
             if (product.id === productId) {
-                alert("This course is already in your cart.");
+                alert("Ce produit est déjà dans votre panier.");
                 isProductInCart = true;
             }
         });
 
-        // only if the product is not already in the cart,
-        // create an object representing selected product info
-        // and push it into local storage array
+
         if (!isProductInCart) {
             lsContent.push({
                 id: productId,
@@ -78,7 +74,6 @@ window.onload = function () {
                 quantity: prodQuantity
             });
 
-            // add product into into local storage
             setLSContent(lsContent);
 
             console.log(lsContent);
@@ -86,8 +81,7 @@ window.onload = function () {
         }
     }
 
- 
-/** Inutile pour le moment  */
+
 
     function removeOneQuantity(event) {
         let buttonClicked = event.target;
@@ -110,7 +104,7 @@ window.onload = function () {
         quantityElement.innerText = quantity;
 
     }
-/*           ____________________________________________________               */
+    /*           ____________________________________________________               */
     /* Filtres */
     class Product {
         constructor(id, name, image, price, description, quantity = 1, category, type) {
@@ -154,19 +148,14 @@ window.onload = function () {
         products.push(product);
     }
 
-
-    //Utiliser les objets de l'array pour personnaliser la fonction saveProduct
-
     console.log(products);
 
-    //filtersBar.addEventListener('click', filterResults);
-    //filtersBar.products = products;
     categoryContainer.products = products;
     typeContainer.products = products;
     minPriceFilter.products = products;
     maxPriceFilter.products = products;
 
-    // Ajoutez des écouteurs d'événements aux filtres
+    // Ajout des écouteurs d'événements aux filtres
     categoryContainer.addEventListener('change', filterProducts);
 
     typeContainer.addEventListener('change', filterProducts);
@@ -175,6 +164,44 @@ window.onload = function () {
     maxPriceFilter.addEventListener('input', filterProducts);
 
 
+    function getCategory() {
+        const currentUrl = window.location.href;
+        let selectedCategory;
+        if (currentUrl.includes('grains')) {
+            selectedCategory = "Café en grains";
+        }
+        else if (currentUrl.includes('moulu')) {
+            selectedCategory = "Café moulu";
+        }
+        else if (currentUrl.includes('capsules')) {
+            selectedCategory = "Café en capsules";
+        }
+        else if (currentUrl.includes('dosettes')) {
+            selectedCategory = "Café en dosettes";
+        }
+        else {
+            selectedCategory = "Tous";
+            console.log("Categ inclue tous");
+        }
+
+        products.forEach((product) => {
+            let cardElement;
+            Array.from(cardElements).forEach((element, index) => {
+                let cardTitle = element.querySelector(".card__title").textContent;
+                if (cardTitle === product.name) {
+                    cardElement = element;
+                }
+            });
+
+            const category = product.category;
+            const categoryMatch = selectedCategory.includes(category) || selectedCategory.includes('Tous') || selectedCategory === undefined;
+            if (categoryMatch) {
+                cardElement.style.display = 'grid';
+            } else {
+                cardElement.style.display = 'none';
+            }
+        });
+    }
 
     function filterProducts(e) {
         const categoryFilters = document.querySelectorAll('.category-filters');
@@ -183,27 +210,25 @@ window.onload = function () {
         let selectedType;
 
         categoryFilters.forEach((filter) => {
-            if(filter.checked) {
+            if (filter.checked) {
                 selectedCategory = filter;
                 selectedCategory = selectedCategory.getAttribute('title');
             }
         });
-       
-       
+
         typeFilters.forEach((filter) => {
-            if(filter.checked) {
+            if (filter.checked) {
                 selectedType = filter;
                 selectedType = selectedType.getAttribute('title');
             }
         });
-       
-        
+
         //const selectedCategory = Array.from(categoryFilters)
-            //.filter((filter) => filter.checked)
-            //.map((filter) => filter.getAttribute('data-category'));
+        //.filter((filter) => filter.checked)
+        //.map((filter) => filter.getAttribute('data-category'));
         //const selectedType = Array.from(typeFilters)
-            //.filter((filter) => filter.checked)
-           // .map((filter) => filter.getAttribute('data-type'));
+        //.filter((filter) => filter.checked)
+        // .map((filter) => filter.getAttribute('data-type'));
         const minPrice = parseFloat(minPriceFilter.value);
         const maxPrice = parseFloat(maxPriceFilter.value);
         console.log("Selected filters : ", selectedCategory, selectedType, minPrice, maxPrice);
@@ -214,9 +239,8 @@ window.onload = function () {
                 let cardTitle = element.querySelector(".card__title").textContent;
                 if (cardTitle === product.name) {
                     cardElement = element;
-                }    
+                }
             });
-            console.log("cardElement : ", cardElement);
 
             /*const category = product.querySelector('.card__btn').getAttribute('data-category');
             const type = product.querySelector('.card__btn').getAttribute('data-type');
@@ -224,7 +248,6 @@ window.onload = function () {
             const category = product.category;
             const type = product.type;
             const price = product.price;
-            console.log("Produit x : ", product, selectedCategory);
 
             const categoryMatch = selectedCategory.includes(category) || selectedCategory.includes('Tous') || selectedCategory === undefined;
             const typeMatch = selectedType.includes(type) || selectedType.includes('Tous') || selectedType === undefined;
@@ -238,13 +261,14 @@ window.onload = function () {
         });
     }
 
-
-
     //----------------------------------------------------------------------  
 
-    /* Evenements et liaisons */
-    // Save product in cart and Local Storage
-    // when add to cart button is clicked
+    /* Evenements et autres */
+
+    if (document.readyState !== 'loading') {
+        getCategory();
+    }
+
     productsContainer.addEventListener("click", function (e) {
         if (e.target.classList.contains("add-to-cart")) {
             e.preventDefault();

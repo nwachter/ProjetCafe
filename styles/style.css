@@ -157,7 +157,7 @@ header {
   overflow: hidden;
   top: 0;
   left: 0;
-  background: url("../media/images/header-bg.jpg"), rgba(248, 121, 3, 0.795) 50% / cover no-repeat;
+  background: url("../media/images/sunset-coffee.jpg"), rgba(248, 121, 3, 0.795) 50% / cover no-repeat;
   background-size: cover;
   background-position: 70% 40%;
   content: 'header-bg';
@@ -313,6 +313,7 @@ nav {
 
 
 
+
 #right-menu {
   /* text-align: right; */
   display: flex;
@@ -343,12 +344,13 @@ img {
   nav {
     position: relative;
     flex-direction: column;
-    height: auto;
+    height: 30vh;
     background-color: #000000cd;
     display: grid;
     justify-items: center;
     grid-template-rows: repeat(2, 1fr);
     align-items: stretch;
+    /* font-size: 2rem; */
 
 
   }
@@ -377,7 +379,7 @@ img {
   }
 
   nav div {
-    font-size: 4px;
+    font-size: 1rem;
     flex-direction: column;
     padding-top: 0.5rem;
     margin: 0px 0px 0px 10px;
@@ -413,21 +415,24 @@ nav a,
 nav~a {
   display: inline;
   position: relative;
-  padding: 20px;
+  padding: 0px 20px;
   vertical-align: middle;
   font-family: "Spectral SC", sans-serif, "Cabin", sans-serif, "Georgia";
   color: white;
   font-weight: bold;
   font-size: 2em;
+  text-decoration: none;
+
   /* 25px = 4em environ */
 }
 
 nav a:visited {
-  color: #BC6C25;
+  color: white;
+  text-decoration: none;
   text-shadow: black 0px 2px;
   display: inline;
   position: relative;
-  padding: 20px;
+  padding: 0px 20px;
   vertical-align: middle;
   font-family: "Spectral SC", sans-serif, "Cabin", sans-serif, "Georgia";
   font-weight: bold;
@@ -435,6 +440,9 @@ nav a:visited {
   /* 25px = 4em environ */
 }
 
+nav a:hover {
+  color: #BC6C25;
+}
 /* Section 1 */
 
 
@@ -452,6 +460,12 @@ nav a:visited {
 
 #section1 p {
   font-size: 16px;
+}
+
+#carouselExampleCaptions img {
+  height: 400px;
+ width: 500px;
+ object-fit: cover;
 }
 
 #mv1 {
@@ -509,10 +523,6 @@ nav a:visited {
 }
 
 
-.produit div:last-of-type {
-  display: flex;
-  background: red;
-}
 
 /* produit utilise ds section1 et section2 */
 
@@ -624,6 +634,9 @@ nav a:visited {
 #categories li img {
   border-radius: 5px;
   box-shadow: 3px 4px 0.9em 0.1em;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
 }
 
 /* Footer */
