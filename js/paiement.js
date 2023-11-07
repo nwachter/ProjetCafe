@@ -3,7 +3,12 @@ window.onload = function () {
     const mainContainer = document.getElementsByClassName('main-payment')[0];
     const userInfoContainer = document.getElementById('user-info');
     const productList = document.getElementById('product-list');
-  const totalContainer = document.getElementById('total-container');
+  const totalElement = document.getElementById('total');
+  const subtotalElement = document.getElementById('subtotal-amount');
+  const deliveryElement = document.getElementById('delivery-amount');
+  const cancelButton = document.getElementById('cancel-btn');
+
+  console.log(getLSContent("total"));
 
     function setLSContent(lsContent, key = "products") {
         localStorage.setItem(key, JSON.stringify(lsContent));
@@ -90,14 +95,44 @@ window.onload = function () {
 
 
 
+    function updateCartTotal() {
+      // var productRows = document.getElementsByClassName('products');
+      // var priceElements = document.getElementsByClassName('prices');
+      // var quantityElements = document.getElementsByClassName('qt-product');
+      // var totalElement = document.getElementById("total");
+      const orderContainer = document.querySelector('.order-container');
+      const lsContent = getLSContent('total');
+      if (localStorage.getItem("total") != null) {
+      deliveryElement.textContent = lsContent.delivery+'€';
+      subtotalElement.textContent = lsContent.subtotal+'€';
+      totalElement.textContent = lsContent.total+'€';
+      }
+
+  
+    }
+  
+    function formatPrice(priceElement) { //prend un node en paramètre
+      let formattedPrice = parseFloat(priceElement.innerText.replace('€', ''));
+      formattedPrice = parseFloat(priceElement.innerText.replace(',', '.'));
+      return formattedPrice.toFixed(2);   //retourne un string qui est un nombre à 2 dixièmes
+    }
+  
+
+
+
     //EVENEMENTS - ETC _________________________________________________________________________________________
 
     if (document.readyState != 'loading') {
         console.log("Loading");
         checkInfo();            //Contient displayProducts, displayUserInfo(), displayTotal (sub, livr, total)
+        updateCartTotal();
         
       }
 
-      console.log(sessionStorage.getItem("userInfo"));
+      cancelButton.addEventListener('click', function () {
+        location.href = './panier.html';
+      });
+
+      
 
 }

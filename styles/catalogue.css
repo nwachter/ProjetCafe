@@ -45,6 +45,10 @@ div {
     align-content: space-between;
     justify-items: start;
     color: white;
+    max-width: 250px;
+    padding-bottom: 5rem;
+    padding-top: 3rem;
+    padding-left: 1rem;
 
 }
 
@@ -159,11 +163,33 @@ input[type="radio"] {
 }
 
 .card__price {
-    position: absolute;
-    left: 110%;
-    bottom: 130%;
+    position: relative;
+    display: inline;
+    /* left: 110%;
+    bottom: 130%; */
     text-shadow: 2px 1px 5px black;
-    font-size: 2em
+    font-size: 1.5rem;
+    justify-self: end;
+    
+}
+
+.unite {
+    position: relative;
+    /* left: 110%;
+    bottom: 130%; */
+    text-shadow: 2px 1px 5px black;
+    font-size: 1.5rem;
+    justify-self: end;   
+}
+
+.counter-div {
+  display: none;
+}
+
+.add-to-cart {
+    position: absolute;
+bottom: 0.40rem;
+left: 6rem;
 }
 
 .card>h2,
@@ -179,6 +205,10 @@ a {
 
 .card__title {
     border-bottom: solid 2px #392F2Da0;
+}
+
+#categoryContainer, #typeContainer {
+    display: grid;
 }
 
 .category_indicator {

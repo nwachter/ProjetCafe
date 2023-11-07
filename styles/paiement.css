@@ -86,3 +86,38 @@ ul {
     grid-template-columns: 4fr 1fr 1fr;
     align-items: center;
 }
+
+ #info-container {
+    padding: 3rem 3rem;
+    margin: 3rem 3rem;
+
+}
+
+#user-info {
+border: dotted 2px #161616;
+max-width: fit-content;
+padding: 4rem;
+background-color:antiquewhite;
+}
+
+
+.payment-container {
+    margin-top: 50px;
+}
+
+.product-element img {
+    max-width: 50%;
+    justify-self:start;
+}
+
+.option-element {
+    margin-bottom: 10px;
+}
+
+.title {
+    margin: 20px 0px;
+}
+
+.option-element {
+    margin-bottom : 5px;
+}

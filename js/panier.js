@@ -130,13 +130,8 @@ window.onload = function () {
   }
 
   function removeProduct(productId) {
-    // remove product from cart (and from local storage)
 
-    // retrieve list of products from LS
     const lsContent = getLSContent();
-
-    // get the index of the product item to remove
-    // inside the local storage content array
     let productIndex;
     lsContent.forEach(function (product, i) {
       if (product.id === productId) {
@@ -144,11 +139,9 @@ window.onload = function () {
       }
     });
 
-    // modify the items in local storage array
-    // to remove the selected product item
 
     lsContent.splice(productIndex, 1);
-    // update local storage content
+
     setLSContent(lsContent);
 
   }
@@ -306,7 +299,7 @@ window.onload = function () {
 
       setLSContent(cartTotal, "total");
 
-      //Refresh panier avec panier final (a supprimer quand le lien du bouton ira a Paiements)
+      //Refresh panier avec panier final
       cartContent.querySelector('tbody').innerHTML = "";
       displayProducts();
 
@@ -327,7 +320,7 @@ window.onload = function () {
     e.preventDefault;
     if (e.target.value <= 1) {
       e.target.value = 1;
-      alert('Pas de quantités négatives (afficher en haut du cart en *');
+      alert('Pas de quantités négatives.');
     }
     //ou onchange si value <= 1 mettre value à 1
   }
@@ -344,7 +337,7 @@ window.onload = function () {
       for(let i = 0 ; inputElements.length-2 < i ; i++ ) {
         element.disabled = "disabled";
       }
-      displayErrorMessages("Informations déjà enregistrées. Cliquez sur Reset pour les modifier.");
+      displayErrorMessages("Informations déjà enregistrées. Cliquez sur Modifier pour les modifier.");
       //Suppression de total si il existe déjà
       if(localStorage.getItem("total") != null) {
         localStorage.removeItem("total");
